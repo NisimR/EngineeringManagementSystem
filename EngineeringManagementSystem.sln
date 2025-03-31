@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineeringManagementSystem.WinForms", "EngineeringManagementSystem.WinForms\EngineeringManagementSystem.WinForms.csproj", "{56BC76FE-7D44-4B8B-AB4F-2741C690DE4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineeringManagementSystem.API", "EngineeringManagementSystem.API\EngineeringManagementSystem.API.csproj", "{F89F83AE-D54F-4BD1-B149-A6C856EA5541}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56BC76FE-7D44-4B8B-AB4F-2741C690DE4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56BC76FE-7D44-4B8B-AB4F-2741C690DE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56BC76FE-7D44-4B8B-AB4F-2741C690DE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56BC76FE-7D44-4B8B-AB4F-2741C690DE4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F89F83AE-D54F-4BD1-B149-A6C856EA5541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F89F83AE-D54F-4BD1-B149-A6C856EA5541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F89F83AE-D54F-4BD1-B149-A6C856EA5541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F89F83AE-D54F-4BD1-B149-A6C856EA5541}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
