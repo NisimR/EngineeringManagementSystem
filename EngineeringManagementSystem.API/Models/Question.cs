@@ -15,5 +15,8 @@
         public DateTime AskedAt { get; set; } = DateTime.Now;
         public string Status { get; set; } = "Open";
 
+        public int? AssignedTo { get; set; } // מזהה משתמש
+        public User? AssignedToUser { get; set; } // ניווט למשתמש
+
     }
 }

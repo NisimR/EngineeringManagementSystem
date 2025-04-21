@@ -16,19 +16,17 @@ namespace EngineeringManagementSystem.API.Controllers
             _context = context;
         }
 
-        // הוספת תשובה לשאלה
+        // הוספת תשובה חדשה לשאלה
         [HttpPost]
         public async Task<IActionResult> AddAnswer([FromBody] AnswerRequest request)
         {
             if (string.IsNullOrWhiteSpace(request.AnswerText))
                 return BadRequest("יש להזין טקסט תשובה");
 
-            // בדיקה אם השאלה קיימת
             var question = await _context.Questions.FindAsync(request.QuestionId);
             if (question == null)
                 return NotFound("שאלה לא נמצאה");
 
-            // הוספת תשובה
             var answer = new Answer
             {
                 QuestionId = request.QuestionId,
@@ -38,18 +36,15 @@ namespace EngineeringManagementSystem.API.Controllers
             };
 
             _context.Answers.Add(answer);
-
-            // עדכון סטטוס השאלה ל-Answered
             question.Status = "Answered";
-
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "התשובה נוספה בהצלחה", answer.Id });
         }
 
-        // שליפת תשובות לשאלה מסוימת
+        // שליפת כל התשובות לשאלה
         [HttpGet("{questionId}")]
-        public async Task<ActionResult<IEnumerable<AnswerDTO>>> GetAnswers(int questionId)
+        public async Task<ActionResult<IEnumerable<AnswerDTO>>> GetAnswersByQuestion(int questionId)
         {
             var answers = await _context.Answers
                 .Where(a => a.QuestionId == questionId)
