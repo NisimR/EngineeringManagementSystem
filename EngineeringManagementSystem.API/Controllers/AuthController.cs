@@ -1,5 +1,8 @@
 ﻿using EngineeringManagementSystem.API.Data;
 using EngineeringManagementSystem.API.Models;
+using EngineeringManagementSystem.API.Requests;
+using EngineeringManagementSystem.API.DTOs;
+
 //using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,8 +33,8 @@ namespace EngineeringManagementSystem.API.Controllers
 
             var userDto = new UserDTO
             {
-                Id = user.Id,
-                Username = user.Username,
+                UserId = user.UserId,
+                UserName = user.Username,
                 FullName = user.FullName,
                 Role = user.Role
             };

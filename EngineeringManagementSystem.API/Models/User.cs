@@ -1,12 +1,39 @@
-﻿namespace EngineeringManagementSystem.API.Models
+﻿using EngineeringManagementSystem.API.Enums;
+using System.ComponentModel.DataAnnotations;
+
+namespace EngineeringManagementSystem.API.Models
 {
+
     public class User
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
+
+        [Required]
         public string Username { get; set; }
+
+        [Required]
         public string FullName { get; set; }
-        public string Role { get; set; } // לדוגמה: "Engineer", "ProjectManager"
+
+        [Required]
+        public string PasswordHash { get; set; } // ← נדרש לשם אימות
+
+        [Required]
+
+        public string Role { get; set; }
+
+
+        [EmailAddress]
         public string Email { get; set; }
-        public string PasswordHash { get; set; }
+
+        [Phone]
+        public string PhoneNumber { get; set; }
+
+        
+
+       
+        
     }
+
+
+
 }

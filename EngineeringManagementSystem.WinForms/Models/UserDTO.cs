@@ -7,6 +7,7 @@ namespace EngineeringManagementSystem.WinForms.Models
         public int Id { get; set; }
         public string Username { get; set; }
         public string FullName { get; set; }
-        public string Role { get; set; } // "Operator", "Engineer", "ProjectManager", "Admin"
+        public string Role { get; set; }
+        public string Token { get; set; } // <-- חדש
     }
 }

@@ -1,22 +1,24 @@
-﻿namespace EngineeringManagementSystem.API.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace EngineeringManagementSystem.API.Models
 {
+    
     public class Question
     {
-        public int Id { get; set; }
-        public int AskedBy { get; set; }
+        public int QuestionId { get; set; }
 
-        public int? ProjectId { get; set; }
-        public Project? Project { get; set; }   // <-- חובה!
+        public int AnswerId { get; set; }
 
-        public int? DocumentId { get; set; }
-        public Document? Document { get; set; } // <-- חובה!
+        public int AskedByUserId { get; set; }
 
-        public string QuestionText { get; set; }
+        public int DocumentRevisionId { get; set; }
+
+        public required string QuestionText { get; set; }
+
         public DateTime AskedAt { get; set; } = DateTime.Now;
+
         public string Status { get; set; } = "Open";
-
-        public int? AssignedTo { get; set; } // מזהה משתמש
-        public User? AssignedToUser { get; set; } // ניווט למשתמש
-
+        
     }
+
 }

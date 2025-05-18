@@ -1,4 +1,4 @@
-﻿namespace EngineeringManagementSystem.API.Models
+﻿namespace EngineeringManagementSystem.API.Requests
 {
     public class AnswerRequest
     {

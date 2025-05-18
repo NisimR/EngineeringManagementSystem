@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using EngineeringManagementSystem.API.Models;
+using EngineeringManagementSystem.API.Enums;
 
 
 namespace EngineeringManagementSystem.API.Data
@@ -9,20 +10,32 @@ namespace EngineeringManagementSystem.API.Data
         public EngineeringManegementDbContext(DbContextOptions<EngineeringManegementDbContext> options)
     : base(options) { }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<Document> Documents { get; set; }
-        public DbSet<Revision> Revisions { get; set; }
-        public DbSet<DocumentRelease> DocumentReleases { get; set; }
+        public DbSet<User> Users { get; set; }//משתמש
+        public DbSet<Document> Documents { get; set; }//מסמך
+       
+        
 
-        public DbSet<Question> Questions { get; set; }
-        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Question> Questions { get; set; }//שאלה
+
+
+        public DbSet<Answer> Answers { get; set; }//תשובה
         public DbSet<Log> Logs { get; set; }
         public DbSet<Notification> Notifications { get; set; }
 
+        public DbSet<ProductionItem> ProductionItems { get; set; }
+
+        public DbSet<EngineeringProject> EngineeringProjects { get; set; }
+
+        public DbSet<ProductionProject> ProductionProjects { get; set; }
 
 
         
+
+
+
+
+
+
     }
 
 

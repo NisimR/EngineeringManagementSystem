@@ -1,0 +1,6 @@
+﻿namespace EngineeringManagementSystem.API
+{
+    public class Diagram
+    {
+    }
+}

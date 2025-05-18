@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EngineeringManagementSystem.API.Migrations
 {
     [DbContext(typeof(EngineeringManegementDbContext))]
-    [Migration("20250331183445_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250516153625_FullInitSchema")]
+    partial class FullInitSchema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,11 @@ namespace EngineeringManagementSystem.API.Migrations
 
             modelBuilder.Entity("EngineeringManagementSystem.API.Models.Answer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AnswerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AnswerId"));
 
                     b.Property<string>("AnswerText")
                         .IsRequired()
@@ -40,54 +40,24 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.Property<DateTime>("AnsweredAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("AnsweredBy")
+                    b.Property<int>("AnsweredByUserId")
                         .HasColumnType("int");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("AnswerId");
 
                     b.ToTable("Answers");
                 });
 
             modelBuilder.Entity("EngineeringManagementSystem.API.Models.Document", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DocumentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FilePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UploadedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UploadedBy")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Documents");
-                });
-
-            modelBuilder.Entity("EngineeringManagementSystem.API.Models.DocumentRelease", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DocumentId"));
 
                     b.Property<int?>("ApproverId")
                         .HasColumnType("int");
@@ -101,11 +71,29 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.Property<bool>("AuthorSigned")
                         .HasColumnType("bit");
 
-                    b.Property<int>("DocumentId")
+                    b.Property<string>("DocName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EngineeringProjectEngProjId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsReleased")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PartNumberDoc")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PathDoc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ReleaseDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Rev")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<int?>("ReviewerId")
                         .HasColumnType("int");
@@ -113,9 +101,38 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.Property<bool>("ReviewerSigned")
                         .HasColumnType("bit");
 
-                    b.HasKey("Id");
+                    b.HasKey("DocumentId");
 
-                    b.ToTable("DocumentReleases");
+                    b.HasIndex("EngineeringProjectEngProjId");
+
+                    b.ToTable("Documents");
+                });
+
+            modelBuilder.Entity("EngineeringManagementSystem.API.Models.EngineeringProject", b =>
+                {
+                    b.Property<int>("EngProjId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EngProjId"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjectManagerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProjectName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EngProjId");
+
+                    b.ToTable("EngineeringProjects");
                 });
 
             modelBuilder.Entity("EngineeringManagementSystem.API.Models.Log", b =>
@@ -171,13 +188,45 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("EngineeringManagementSystem.API.Models.Project", b =>
+            modelBuilder.Entity("EngineeringManagementSystem.API.Models.ProductionItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ProductionItemId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductionItemId"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PartName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductionProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductionItemId");
+
+                    b.ToTable("ProductionItems");
+                });
+
+            modelBuilder.Entity("EngineeringManagementSystem.API.Models.ProductionProject", b =>
+                {
+                    b.Property<int>("ProdProjId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProdProjId"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -186,37 +235,40 @@ namespace EngineeringManagementSystem.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.PrimitiveCollection<string>("Documents")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjectManagerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ProjectName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("ProdProjId");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Projects");
+                    b.ToTable("ProductionProjects");
                 });
 
             modelBuilder.Entity("EngineeringManagementSystem.API.Models.Question", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("QuestionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
+
+                    b.Property<int>("AnswerId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("AskedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("AskedBy")
+                    b.Property<int>("AskedByUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DocumentId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("DocumentRevisionId")
                         .HasColumnType("int");
 
                     b.Property<string>("QuestionText")
@@ -227,49 +279,18 @@ namespace EngineeringManagementSystem.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("QuestionId");
 
                     b.ToTable("Questions");
                 });
 
-            modelBuilder.Entity("EngineeringManagementSystem.API.Models.Revision", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DocumentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FilePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RevisionDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("RevisionNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Revisions");
-                });
-
             modelBuilder.Entity("EngineeringManagementSystem.API.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -283,6 +304,10 @@ namespace EngineeringManagementSystem.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -291,9 +316,21 @@ namespace EngineeringManagementSystem.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("EngineeringManagementSystem.API.Models.Document", b =>
+                {
+                    b.HasOne("EngineeringManagementSystem.API.Models.EngineeringProject", null)
+                        .WithMany("Documents")
+                        .HasForeignKey("EngineeringProjectEngProjId");
+                });
+
+            modelBuilder.Entity("EngineeringManagementSystem.API.Models.EngineeringProject", b =>
+                {
+                    b.Navigation("Documents");
                 });
 #pragma warning restore 612, 618
         }
