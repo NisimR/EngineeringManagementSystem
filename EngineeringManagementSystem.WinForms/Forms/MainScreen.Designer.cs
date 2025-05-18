@@ -45,6 +45,7 @@
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nextPage2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userDTOBindingSource)).BeginInit();
@@ -191,11 +192,22 @@
             // 
             this.userDTOBindingSource.DataSource = typeof(EngineeringManagementSystem.WinForms.Models.UserDTO);
             // 
+            // nextPage2
+            // 
+            this.nextPage2.Location = new System.Drawing.Point(624, 93);
+            this.nextPage2.Name = "nextPage2";
+            this.nextPage2.Size = new System.Drawing.Size(128, 23);
+            this.nextPage2.TabIndex = 6;
+            this.nextPage2.Text = "Next Page -->";
+            this.nextPage2.UseVisualStyleBackColor = true;
+            this.nextPage2.Click += new System.EventHandler(this.nextPage_Click);
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.nextPage2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -229,5 +241,6 @@
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.TextBox passwordHash;
         private System.Windows.Forms.ComboBox role;
+        private System.Windows.Forms.Button nextPage2;
     }
 }

@@ -130,5 +130,14 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
 
         }
+
+        private void nextPage_Click(object sender, EventArgs e)
+        {
+            var newForm = new UserArea(); // שים פה את שם הטופס החדש שלך
+            newForm.Show();
+
+            // סוגר את הטופס הנוכחי
+            this.Hide();
+        }
     }
 }

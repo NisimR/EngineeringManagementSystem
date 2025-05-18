@@ -54,6 +54,12 @@
     <Compile Include="Forms\MainScreen.Designer.cs">
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserArea.Designer.cs">
+      <DependentUpon>UserArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AnswerDTO.cs" />
     <Compile Include="Models\AnswerRequest.cs" />
     <Compile Include="Models\LoginRequest.cs" />
@@ -75,6 +81,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\MainScreen.resx">
       <DependentUpon>MainScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserArea.resx">
+      <DependentUpon>UserArea.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
