@@ -71,12 +71,60 @@ namespace EngineeringManagementSystem.WinForms.Forms
             }
         }
 
+        private async void addUserBtn_Click(object sender, EventArgs e)
+        {
+            var newUser = new
+            {
+                Username = username.Text.Trim(),
+                fullName = fullName.Text.Trim(),
+                role = role.Text.Trim(),
+                passwordHash = passwordHash.Text.Trim(),
+                email = email.Text.Trim()
+
+            };
+
+            try
+            {
+
+                Debug.WriteLine($"Message here !!!");
+
+                string apiUrl = "http://localhost:5222/api/users"; // ודא שזה נכון
+
+                var json = JsonConvert.SerializeObject(newUser);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync(apiUrl, content);
+                Debug.WriteLine($"Object = {json}");
+
+                response.EnsureSuccessStatusCode();
+
+                MessageBox.Show("משתמש נוסף בהצלחה!");
+                await LoadUsersAsync(); // רענון הרשימה
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Message herexxxx  {ex.Message}\n{ex.StackTrace}");
+
+                MessageBox.Show($"שגיאה בהוספת משתמש: {ex.Message}");
+            }
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
