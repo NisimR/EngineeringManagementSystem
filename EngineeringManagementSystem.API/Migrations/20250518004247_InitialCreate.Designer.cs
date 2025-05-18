@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EngineeringManagementSystem.API.Migrations
 {
     [DbContext(typeof(EngineeringManegementDbContext))]
-    [Migration("20250331183445_InitialCreate")]
+    [Migration("20250518004247_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -77,6 +77,8 @@ namespace EngineeringManagementSystem.API.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Documents");
                 });
@@ -213,6 +215,12 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.Property<int>("AskedBy")
                         .HasColumnType("int");
 
+                    b.Property<int?>("AssignedToId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("AssignedToUserId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("DocumentId")
                         .HasColumnType("int");
 
@@ -228,6 +236,12 @@ namespace EngineeringManagementSystem.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AssignedToUserId");
+
+                    b.HasIndex("DocumentId");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Questions");
                 });
@@ -289,11 +303,46 @@ namespace EngineeringManagementSystem.API.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Username")
+                        .IsUnique();
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("EngineeringManagementSystem.API.Models.Document", b =>
+                {
+                    b.HasOne("EngineeringManagementSystem.API.Models.Project", "Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("EngineeringManagementSystem.API.Models.Question", b =>
+                {
+                    b.HasOne("EngineeringManagementSystem.API.Models.User", "AssignedToUser")
+                        .WithMany()
+                        .HasForeignKey("AssignedToUserId");
+
+                    b.HasOne("EngineeringManagementSystem.API.Models.Document", "Document")
+                        .WithMany()
+                        .HasForeignKey("DocumentId");
+
+                    b.HasOne("EngineeringManagementSystem.API.Models.Project", "Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectId");
+
+                    b.Navigation("AssignedToUser");
+
+                    b.Navigation("Document");
+
+                    b.Navigation("Project");
                 });
 #pragma warning restore 612, 618
         }

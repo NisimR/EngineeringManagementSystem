@@ -35,7 +35,7 @@ namespace EngineeringManagementSystem.API.Controllers
                     ProjectName = q.Project != null ? q.Project.ProjectName : null,
                     DocumentId = q.DocumentId,
                     DocumentName = q.Document != null ? q.Document.FileName : null,
-                    AssignedTo = q.AssignedTo,
+                    AssignedTo = q.AssignedToId,
                     AssignedToName = q.AssignedToUser != null ? q.AssignedToUser.FullName : null
                 }).ToListAsync();
 
@@ -53,9 +53,15 @@ namespace EngineeringManagementSystem.API.Controllers
 
             if (request.ProjectId.HasValue)
             {
+                //var manager = await _context.Users
+                //    .OfType<ProjectManager>()
+                //    .FirstOrDefaultAsync(u => u.ProjectId == request.ProjectId);
+
                 var manager = await _context.Users
-                    .OfType<ProjectManager>()
-                    .FirstOrDefaultAsync(u => u.ProjectId == request.ProjectId);
+              //.Where(u => u.ProjectId == request.ProjectId && u.Role == "ProjectManager")
+
+                    .Where(u =>  u.Role == "ProjectManager")
+                .FirstOrDefaultAsync();
 
                 if (manager != null)
                 {
@@ -71,7 +77,7 @@ namespace EngineeringManagementSystem.API.Controllers
                 QuestionText = request.QuestionText,
                 Status = "Open",
                 AskedAt = DateTime.Now,
-                AssignedTo = assignedTo
+                AssignedToId = assignedTo
             };
 
             _context.Questions.Add(question);
@@ -88,7 +94,7 @@ namespace EngineeringManagementSystem.API.Controllers
             if (question == null)
                 return NotFound("שאלה לא נמצאה");
 
-            question.AssignedTo = newUserId;
+            question.AssignedToId = newUserId;
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "השאלה נותבה מחדש", question.Id });

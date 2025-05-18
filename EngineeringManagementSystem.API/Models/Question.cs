@@ -1,11 +1,14 @@
 ﻿namespace EngineeringManagementSystem.API.Models
 {
+    
     public class Question
     {
         public int Id { get; set; }
         public int AskedBy { get; set; }
 
         public int? ProjectId { get; set; }
+
+        // (Navigation Property)
         public Project? Project { get; set; }   // <-- חובה!
 
         public int? DocumentId { get; set; }
@@ -15,7 +18,7 @@
         public DateTime AskedAt { get; set; } = DateTime.Now;
         public string Status { get; set; } = "Open";
 
-        public int? AssignedTo { get; set; } // מזהה משתמש
+        public int? AssignedToId { get; set; } // מזהה משתמש
         public User? AssignedToUser { get; set; } // ניווט למשתמש
 
     }

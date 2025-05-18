@@ -212,7 +212,7 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.Property<int>("AskedBy")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AssignedTo")
+                    b.Property<int?>("AssignedToId")
                         .HasColumnType("int");
 
                     b.Property<int?>("AssignedToUserId")
@@ -300,9 +300,12 @@ namespace EngineeringManagementSystem.API.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Username")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
