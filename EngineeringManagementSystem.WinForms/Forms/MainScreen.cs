@@ -44,7 +44,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
                 // כתובת ה-API שלך 
                 //without https only http
                 string apiUrl = "http://localhost:5222/api/Users";
-               // System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+                // System.Net.ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 
                 HttpResponseMessage response = await _httpClient.GetAsync(apiUrl);
 
@@ -73,11 +73,13 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
         private async void addUserBtn_Click(object sender, EventArgs e)
         {
+
+            //some DAO - the object that hte server need to get... 
             var newUser = new
             {
                 Username = username.Text.Trim(),
                 fullName = fullName.Text.Trim(),
-                role = role.Text.Trim(),
+                role = role.SelectedItem?.ToString(),
                 passwordHash = passwordHash.Text.Trim(),
                 email = email.Text.Trim()
 

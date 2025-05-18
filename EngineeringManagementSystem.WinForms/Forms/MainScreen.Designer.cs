@@ -35,16 +35,16 @@
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.addUserBtn = new System.Windows.Forms.Button();
-            this.role = new System.Windows.Forms.TextBox();
             this.fullName = new System.Windows.Forms.TextBox();
             this.username = new System.Windows.Forms.TextBox();
+            this.passwordHash = new System.Windows.Forms.TextBox();
+            this.email = new System.Windows.Forms.TextBox();
+            this.role = new System.Windows.Forms.ComboBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.passwordHash = new System.Windows.Forms.TextBox();
-            this.email = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userDTOBindingSource)).BeginInit();
@@ -90,10 +90,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.role);
             this.groupBox1.Controls.Add(this.email);
             this.groupBox1.Controls.Add(this.passwordHash);
             this.groupBox1.Controls.Add(this.addUserBtn);
-            this.groupBox1.Controls.Add(this.role);
             this.groupBox1.Controls.Add(this.fullName);
             this.groupBox1.Controls.Add(this.username);
             this.groupBox1.Location = new System.Drawing.Point(12, 49);
@@ -113,15 +113,6 @@
             this.addUserBtn.UseVisualStyleBackColor = true;
             this.addUserBtn.Click += new System.EventHandler(this.addUserBtn_Click);
             // 
-            // role
-            // 
-            this.role.Location = new System.Drawing.Point(20, 78);
-            this.role.Name = "role";
-            this.role.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.role.Size = new System.Drawing.Size(100, 20);
-            this.role.TabIndex = 2;
-            this.role.Text = "תפקיד";
-            // 
             // fullName
             // 
             this.fullName.Location = new System.Drawing.Point(20, 51);
@@ -138,6 +129,39 @@
             this.username.TabIndex = 0;
             this.username.Text = "שם משתמש";
             this.username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // passwordHash
+            // 
+            this.passwordHash.Location = new System.Drawing.Point(20, 104);
+            this.passwordHash.Name = "passwordHash";
+            this.passwordHash.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.passwordHash.Size = new System.Drawing.Size(100, 20);
+            this.passwordHash.TabIndex = 5;
+            this.passwordHash.Text = "סיסמה";
+            // 
+            // email
+            // 
+            this.email.Location = new System.Drawing.Point(20, 130);
+            this.email.Name = "email";
+            this.email.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.email.Size = new System.Drawing.Size(100, 20);
+            this.email.TabIndex = 6;
+            this.email.Text = "אימייל";
+            this.email.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // role
+            // 
+            this.role.FormattingEnabled = true;
+            this.role.Items.AddRange(new object[] {
+            "Operator ",
+            "Engineer",
+            "ProjectManager",
+            "Admin"});
+            this.role.Location = new System.Drawing.Point(20, 77);
+            this.role.Name = "role";
+            this.role.Size = new System.Drawing.Size(100, 21);
+            this.role.TabIndex = 7;
+            this.role.Text = "תפקיד";
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -166,25 +190,6 @@
             // userDTOBindingSource
             // 
             this.userDTOBindingSource.DataSource = typeof(EngineeringManagementSystem.WinForms.Models.UserDTO);
-            // 
-            // passwordHash
-            // 
-            this.passwordHash.Location = new System.Drawing.Point(20, 104);
-            this.passwordHash.Name = "passwordHash";
-            this.passwordHash.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.passwordHash.Size = new System.Drawing.Size(100, 20);
-            this.passwordHash.TabIndex = 5;
-            this.passwordHash.Text = "סיסמה";
-            // 
-            // email
-            // 
-            this.email.Location = new System.Drawing.Point(20, 130);
-            this.email.Name = "email";
-            this.email.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.email.Size = new System.Drawing.Size(100, 20);
-            this.email.TabIndex = 6;
-            this.email.Text = "אימייל";
-            this.email.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // MainScreen
             // 
@@ -219,10 +224,10 @@
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button addUserBtn;
-        private System.Windows.Forms.TextBox role;
         private System.Windows.Forms.TextBox fullName;
         private System.Windows.Forms.TextBox username;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.TextBox passwordHash;
+        private System.Windows.Forms.ComboBox role;
     }
 }

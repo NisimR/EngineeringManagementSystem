@@ -60,7 +60,6 @@
     <Compile Include="Models\QuestionDTO.cs" />
     <Compile Include="Models\QuestionRequest.cs" />
     <Compile Include="Models\Session.cs" />
-    <Compile Include="Models\UserDAO.cs" />
     <Compile Include="Models\UserDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
