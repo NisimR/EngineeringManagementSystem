@@ -19,13 +19,35 @@ namespace EngineeringManagementSystem.API.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var answers = await _context.Answers.ToListAsync();
             return Ok(answers);
-        }
+        }*/
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var answers = await _context.Answers.ToListAsync();
+
+            var userIds = answers.Select(a => a.AnsweredByUserId).Distinct().ToList();
+
+            var users = await _context.Users
+                .Where(u => userIds.Contains(u.UserId))
+                .ToDictionaryAsync(u => u.UserId, u => u.FullName);
+
+            var result = answers.Select(a => new AnswerDTO
+            {
+                AnswerId = a.AnswerId,
+                AnswerText = a.AnswerText,
+                AnsweredByUser = users.ContainsKey(a.AnsweredByUserId) ? users[a.AnsweredByUserId] : "לא ידוע",
+                //QuestionText = a.QuestionText,
+                AnsweredAt = a.AnsweredAt
+            });
+
+            return Ok(result);
+        }
 
         [HttpGet("by-question/{questionId}")]
         public async Task<IActionResult> GetByQuestion(int questionId)

@@ -4,18 +4,31 @@ using System;
 
 namespace EngineeringManagementSystem.WinForms.Models
 {
-    public class QuestionDTO
-    {
-        public int Id { get; set; }
-        public string QuestionText { get; set; }
-        public string Status { get; set; }
-        public DateTime AskedAt { get; set; }
-        public int AskedBy { get; set; }
-        public int? ProjectId { get; set; }
-        public string ProjectName { get; set; } = string.Empty;
-        public int? DocumentId { get; set; }
-        public string DocumentName { get; set; } = string.Empty;
-        public int? AssignedTo { get; set; }
-        public string AssignedToName { get; set; } = string.Empty;
-    }
+
+    
+
+        public class QuestionDTO
+        {
+            public int QuestionId { get; set; }//מעביר מס מזהה של השאלה
+
+            public string Answer { get; set; }
+
+            public string AskedByUser { get; set; }//מעביר את שם השולח
+
+            public int DocumentRevisionId { get; set; }//מעביר את המספר המזהה של המסמך
+
+            public  string QuestionText { get; set; }//מעביר את הטקסט של השאלה
+
+            public DateTime AskedAt { get; set; } //מעביר את הזמן שנאלה השאלה
+
+            public string Status { get; set; } // מעביר את הסטאטוס של השאלה
+        }
+
+    
+
+
+
+
+
+
 }

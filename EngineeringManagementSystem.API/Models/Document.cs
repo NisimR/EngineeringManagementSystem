@@ -9,7 +9,7 @@ namespace EngineeringManagementSystem.API.Models
         public string PathDoc { get; set; }
         public string DocName { get; set; }
         public char Rev {  get; set; }
-        public int AuthorId { get; set; }
+        public int? AuthorId { get; set; }
         public int? ReviewerId { get; set; }
         public int? ApproverId { get; set; }
         public bool AuthorSigned{ get; set; } = false;

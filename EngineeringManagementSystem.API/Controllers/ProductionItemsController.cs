@@ -18,8 +18,6 @@ namespace EngineeringManagementSystem.API.Controllers
             _context = context;
         }
 
-
-
         // ➕ הוספת פריט חדש לייצור
         [HttpPost]
         public async Task<IActionResult> AddItem([FromBody] ProductionItemRequest request)

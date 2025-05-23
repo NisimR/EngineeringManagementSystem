@@ -1,10 +1,9 @@
-﻿using EngineeringManagementSystem.API.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using EngineeringManagementSystem.API.Data;
+using EngineeringManagementSystem.API.DTOs;
 using EngineeringManagementSystem.API.Models;
 using EngineeringManagementSystem.API.Requests;
-using EngineeringManagementSystem.API.DTOs;
-
-//using Microsoft.AspNetCore.Identity.Data;
-using Microsoft.AspNetCore.Mvc;
 
 namespace EngineeringManagementSystem.API.Controllers
 {
@@ -25,10 +24,14 @@ namespace EngineeringManagementSystem.API.Controllers
             if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
                 return BadRequest("יש להזין שם משתמש וסיסמה");
 
-            var user = _context.Users.FirstOrDefault(u =>
-                u.Username == request.Username && u.PasswordHash == request.Password);
-
+            var user = _context.Users.FirstOrDefault(u => u.Username == request.Username);
             if (user == null)
+                return Unauthorized("שם משתמש או סיסמה שגויים");
+
+            var hasher = new PasswordHasher<object>();
+            var result = hasher.VerifyHashedPassword(null, user.PasswordHash, request.Password);
+
+            if (result != PasswordVerificationResult.Success)
                 return Unauthorized("שם משתמש או סיסמה שגויים");
 
             var userDto = new UserDTO
@@ -36,7 +39,9 @@ namespace EngineeringManagementSystem.API.Controllers
                 UserId = user.UserId,
                 UserName = user.Username,
                 FullName = user.FullName,
-                Role = user.Role
+                Role = user.Role,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
             };
 
             return Ok(userDto);

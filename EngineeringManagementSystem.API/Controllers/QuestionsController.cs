@@ -19,20 +19,54 @@ namespace EngineeringManagementSystem.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var questions = await _context.Questions.ToListAsync();
-            return Ok(questions);
-        }
+public async Task<IActionResult> GetAll()
+{
+    var questions = await _context.Questions.ToListAsync();
+
+    var userIds = questions.Select(q => q.AskedByUserId).Distinct().ToList();
+
+    var users = await _context.Users
+        .Where(u => userIds.Contains(u.UserId))
+        .ToDictionaryAsync(u => u.UserId, u => u.FullName);
+
+    var result = questions.Select(q => new QuestionDTO
+    {
+        QuestionId = q.QuestionId,
+        QuestionText = q.QuestionText,
+        AskedByUser = users.ContainsKey(q.AskedByUserId) ? users[q.AskedByUserId] : "לא ידוע",
+        DocumentRevisionId = q.DocumentRevisionId,
+        AskedAt = q.AskedAt,
+        Answer = "", // אם אין קשר לתשובה, אפשר להשאיר ריק
+        Status = q.Status
+    });
+
+    return Ok(result);
+}
+
 
         [HttpPost]
-        public async Task<IActionResult> Create(Question question)
+        public async Task<IActionResult> Create([FromBody] QuestionRequest request)
         {
-            question.AskedAt = DateTime.Now;
+            if (string.IsNullOrWhiteSpace(request.QuestionText))
+            {
+                return BadRequest("שאלה לא יכולה להיות ריקה.");
+            }
+
+            var question = new Question
+            {
+                AskedByUserId = request.AskedByUserId,
+                DocumentRevisionId = request.DocumentRevisionId,
+                QuestionText = request.QuestionText,
+                AskedAt = DateTime.Now,
+                Status = "Open"
+            };
+
             _context.Questions.Add(question);
             await _context.SaveChangesAsync();
+
             return Ok(question);
         }
+
     }
 
 }
