@@ -9,7 +9,7 @@ namespace EngineeringManagementSystem.WinForms.Models
         public int Id { get; set; }
         public int QuestionId { get; set; }
         public string AnswerText { get; set; }
-        public int AnsweredBy { get; set; }
-        public DateTime AnsweredAt { get; set; }
+        public int AnsweredByUserId { get; set; }
+        public DateTime AnsweredAt   { get; set; }
     }
 }

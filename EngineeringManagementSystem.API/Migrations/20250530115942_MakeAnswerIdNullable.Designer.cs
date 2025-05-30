@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EngineeringManagementSystem.API.Migrations
 {
     [DbContext(typeof(EngineeringManegementDbContext))]
-    [Migration("20250516153625_FullInitSchema")]
-    partial class FullInitSchema
+    [Migration("20250530115942_MakeAnswerIdNullable")]
+    partial class MakeAnswerIdNullable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,7 +65,7 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.Property<bool>("ApproverSigned")
                         .HasColumnType("bit");
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<bool>("AuthorSigned")
@@ -75,7 +75,7 @@ namespace EngineeringManagementSystem.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EngineeringProjectEngProjId")
+                    b.Property<int>("EngProjId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsReleased")
@@ -102,8 +102,6 @@ namespace EngineeringManagementSystem.API.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("DocumentId");
-
-                    b.HasIndex("EngineeringProjectEngProjId");
 
                     b.ToTable("Documents");
                 });
@@ -268,7 +266,7 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.Property<int>("AskedByUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DocumentRevisionId")
+                    b.Property<int>("DocumentId")
                         .HasColumnType("int");
 
                     b.Property<string>("QuestionText")
@@ -319,18 +317,6 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("EngineeringManagementSystem.API.Models.Document", b =>
-                {
-                    b.HasOne("EngineeringManagementSystem.API.Models.EngineeringProject", null)
-                        .WithMany("Documents")
-                        .HasForeignKey("EngineeringProjectEngProjId");
-                });
-
-            modelBuilder.Entity("EngineeringManagementSystem.API.Models.EngineeringProject", b =>
-                {
-                    b.Navigation("Documents");
                 });
 #pragma warning restore 612, 618
         }

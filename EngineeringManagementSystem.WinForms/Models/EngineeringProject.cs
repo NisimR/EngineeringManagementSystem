@@ -1,20 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace EngineeringManagementSystem.API.Models
+namespace EngineeringManagementSystem.WinForms.Models
 {
     public class EngineeringProject
     {
-        [Key]
         public int EngProjId { get; set; }
-
-        [Required]
         public string ProjectName { get; set; }
-
         public string Description { get; set; }
-
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-
+        public DateTime CreatedAt { get; set; }
         public int ProjectManagerId { get; set; }
-        
     }
 }

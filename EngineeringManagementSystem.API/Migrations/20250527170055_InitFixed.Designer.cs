@@ -4,6 +4,7 @@ using EngineeringManagementSystem.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EngineeringManagementSystem.API.Migrations
 {
     [DbContext(typeof(EngineeringManegementDbContext))]
-    partial class EngineeringManegementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250527170055_InitFixed")]
+    partial class InitFixed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,7 +266,7 @@ namespace EngineeringManagementSystem.API.Migrations
                     b.Property<int>("AskedByUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DocumentId")
+                    b.Property<int>("DocumentRevisionId")
                         .HasColumnType("int");
 
                     b.Property<string>("QuestionText")

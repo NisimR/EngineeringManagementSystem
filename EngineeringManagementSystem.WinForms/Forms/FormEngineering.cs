@@ -10,6 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EngineeringManagementSystem.WinForms.Models;
+using System.IO;
+using EngineeringManagementSystem.WinForms.Forms;
+using System.Linq.Expressions;
+
+
 
 namespace EngineeringManagementSystem.WinForms.Forms
 {
@@ -26,10 +31,13 @@ namespace EngineeringManagementSystem.WinForms.Forms
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:7251/");
-                var projects = await client.GetFromJsonAsync<List<EngineeringProjectDTO>>("api/EngineeringProjects");
+
+                // ⬅️ כאן חשוב מאוד להוסיף את הנתיב ל-API
+                var projects = await client.GetFromJsonAsync<List<EngineeringProject>>("api/EngineeringProjects");
+
                 cmbProjects.DataSource = projects;
-                cmbProjects.DisplayMember = "ProjectName";  // או השדה שאתה מציג
-                cmbProjects.ValueMember = "ProjectId";
+                cmbProjects.DisplayMember = "ProjectName";
+                cmbProjects.ValueMember = "EngProjId";
             }
         }
 
@@ -48,8 +56,12 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
             if (cmbProjects.SelectedValue is int projectId)
             {
-                await LoadDocumentsForProject(projectId);
+                await LoadDocumentsForProject(projectId);        // טוען מסמכים לפרויקט
+                await LoadQuestionsForProject(projectId);        // טוען שאלות כלליות לפרויקט
+
             }
+
+
         }
 
 
@@ -58,6 +70,9 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
         }
 
+        /// <summary>
+        /// טוען מסמכים הקשורים לפרויקט.
+        /// </summary>
         private async Task LoadDocumentsForProject(int projectId)
         {
             using (var client = new HttpClient())
@@ -68,9 +83,195 @@ namespace EngineeringManagementSystem.WinForms.Forms
             }
         }
 
-        private void FormEngineering_Load_1(object sender, EventArgs e)
+        /// <summary>
+        /// טוען שאלות הקשורות לפרויקט.
+        /// </summary>
+        private async Task LoadQuestionsForProject(int projectId)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:7251/");
+                try
+                {
+                    // פונה לשרת ומבקש את השאלות על הפרויקט
+                    var questions = await client.GetFromJsonAsync<List<QuestionDTO>>($"api/Questions/byProject/{projectId}");
+                    dataGridQuestions.DataSource = questions;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"שגיאה בטעינת שאלות: {ex.Message}");
+                }
+            }
+        }
+
+
+        private async void FormEngineering_Load_1(object sender, EventArgs e)
+        {
+            dataGridDocuments.SelectionChanged += dataGridDocuments_SelectionChanged;
+            await LoadProjectsAsync();
+        }
+
+        private void btnOpenDoc_Click(object sender, EventArgs e)
+        {
+            if (dataGridDocuments.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("בחר מסמך לפתיחה.");
+                return;
+            }
+
+            var doc = (DocumentDTO)dataGridDocuments.SelectedRows[0].DataBoundItem;
+
+            // נניח PathDoc מציין את הנתיב על הדיסק או קישור קובץ
+            if (!string.IsNullOrEmpty(doc.PathDoc) && File.Exists(doc.PathDoc))
+            {
+                System.Diagnostics.Process.Start("explorer", doc.PathDoc);
+            }
+            else
+            {
+                MessageBox.Show("הקובץ לא נמצא.");
+            }
+        }
+
+        private async void btnEditDoc_Click(object sender, EventArgs e)
+        {
+            if (dataGridDocuments.SelectedRows.Count == 0)
+                return;
+
+            var doc = (DocumentDTO)dataGridDocuments.SelectedRows[0].DataBoundItem;
+
+            if (doc.IsReleased)
+            {
+                MessageBox.Show("לא ניתן לערוך מסמך ששוחרר.");
+                return;
+            }
+
+            new FormEditDocument(doc).ShowDialog(); // מסך עריכה נפרד
+            await LoadDocumentsForProject((int)cmbProjects.SelectedValue); // רענון
+        }
+
+        private async void btnDeleteDoc_Click(object sender, EventArgs e)
+        {
+            if (dataGridDocuments.SelectedRows.Count == 0)
+                return;
+
+            var doc = (DocumentDTO)dataGridDocuments.SelectedRows[0].DataBoundItem;
+
+            if (doc.IsReleased)
+            {
+                MessageBox.Show("לא ניתן למחוק מסמך משוחרר.");
+                return;
+            }
+
+            var confirm = MessageBox.Show("האם אתה בטוח שברצונך למחוק?", "אישור מחיקה", MessageBoxButtons.YesNo);
+            if (confirm != DialogResult.Yes) return;
+
+            using (var client = new HttpClient())
+            {
+                await client.DeleteAsync($"https://localhost:7251/api/Documents/{doc.DocumentId}");
+                MessageBox.Show("המסמך נמחק.");
+                await LoadDocumentsForProject((int)cmbProjects.SelectedValue);
+            }
+        }
+
+        private async void btnReleaseDoc_Click(object sender, EventArgs e)
+        {
+            if (dataGridDocuments.SelectedRows.Count == 0)
+                return;
+
+            var doc = (DocumentDTO)dataGridDocuments.SelectedRows[0].DataBoundItem;
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync($"https://localhost:7251/api/Documents/{doc.DocumentId}/release", null);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("המסמך שוחרר.");
+                    await LoadDocumentsForProject((int)cmbProjects.SelectedValue);
+                }
+                else
+                {
+                    MessageBox.Show("לא ניתן לשחרר את המסמך. ודא שכל החתימות קיימות.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// בעת בחירת שורה במסמכים – טען שאלות על המסמך.
+        /// </summary>
+        private async void dataGridDocuments_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridDocuments.SelectedRows.Count > 0)
+            {
+                var doc = (DocumentDTO)dataGridDocuments.SelectedRows[0].DataBoundItem;
+                await LoadQuestionsForDocument(doc.DocumentId); // ← מתייחס ל־DocumentId כעת
+            }
+        }
+        private async void btnAddDoc_Click(object sender, EventArgs e)
+        {
+            if (cmbProjects.SelectedValue is int projectId)
+            {
+                new FormAddDocument(projectId).ShowDialog();
+                await LoadDocumentsForProject(projectId); // ← ממתין לסיום טעינת המסמכים
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// טוען שאלות הקשורות למסמך.
+        /// </summary>
+        private async Task LoadQuestionsForDocument(int documentId)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:7251/");
+                try
+                {
+                    // מביא שאלות לפי מזהה מסמך
+                    var questions = await client.GetFromJsonAsync<List<QuestionDTO>>($"api/Questions/byDocument/{documentId}");
+                    dataGridQuestions.DataSource = questions;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"שגיאה בטעינת שאלות: {ex.Message}");
+                }
+            }
+        }
+
+        private void dataGridQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAnswerQuestion_Click(object sender, EventArgs e)
+        {
+            if (dataGridQuestions.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("בחר שאלה לענות עליה.");
+                return;
+            }
+
+            var question = (QuestionDTO)dataGridQuestions.SelectedRows[0].DataBoundItem;
+
+            if (question.AnswerId != null && question.AnswerId != 0)
+            {
+                MessageBox.Show("שאלה זו כבר נענתה.");
+                return;
+            }
+
+            var answerForm = new FormAnswerQuestion(
+                questionId: question.QuestionId,
+                questionText: question.QuestionText,
+                answeredByUserId: 1 // 🟡 לשנות למשתמש הנוכחי המחובר
+            );
+
+            answerForm.ShowDialog();
+
+            // רענון אחרי סגירת התשובה
+            _ = LoadQuestionsForDocument(question.DocumentId);
         }
     }
 }

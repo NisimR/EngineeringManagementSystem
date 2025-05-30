@@ -1,78 +1,48 @@
 ﻿using EngineeringManagementSystem.API.Data;
-using EngineeringManagementSystem.API.DTOs;
 using EngineeringManagementSystem.API.Models;
-using EngineeringManagementSystem.API.Requests;
 using Microsoft.AspNetCore.Mvc;
+using EngineeringManagementSystem.API.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace EngineeringManagementSystem.API.Controllers
+[ApiController]
+[Route("api/[controller]")]
+public class AnswersController : ControllerBase
 {
-    [ApiController]
+    private readonly EngineeringManegementDbContext _context;
 
-    [Route("api/[controller]")]
-    public class AnswersController : ControllerBase
+    public AnswersController(EngineeringManegementDbContext context)
     {
-        private readonly EngineeringManegementDbContext _context;
+        _context = context;
+    }
 
-        public AnswersController(EngineeringManegementDbContext context)
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Answer>>> GetAll()
+    {
+        return await _context.Answers.ToListAsync();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] AnswerDTO dto)
+    {
+        var question = await _context.Questions.FindAsync(dto.QuestionId);
+        if (question == null)
+            return NotFound("שאלה לא קיימת.");
+
+        var answer = new Answer
         {
-            _context = context;
-        }
+            QuestionId = dto.QuestionId,
+            AnswerText = dto.AnswerText,
+            AnsweredByUserId = dto.AnsweredByUserId,
+            AnsweredAt = DateTime.Now
+        };
 
-        /*[HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var answers = await _context.Answers.ToListAsync();
-            return Ok(answers);
-        }*/
+        _context.Answers.Add(answer);
+        await _context.SaveChangesAsync();
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var answers = await _context.Answers.ToListAsync();
+        question.AnswerId = answer.AnswerId;
+        question.Status = "Answered";
+        await _context.SaveChangesAsync();
 
-            var userIds = answers.Select(a => a.AnsweredByUserId).Distinct().ToList();
-
-            var users = await _context.Users
-                .Where(u => userIds.Contains(u.UserId))
-                .ToDictionaryAsync(u => u.UserId, u => u.FullName);
-
-            var result = answers.Select(a => new AnswerDTO
-            {
-                AnswerId = a.AnswerId,
-                AnswerText = a.AnswerText,
-                AnsweredByUser = users.ContainsKey(a.AnsweredByUserId) ? users[a.AnsweredByUserId] : "לא ידוע",
-                //QuestionText = a.QuestionText,
-                AnsweredAt = a.AnsweredAt
-            });
-
-            return Ok(result);
-        }
-
-        [HttpGet("by-question/{questionId}")]
-        public async Task<IActionResult> GetByQuestion(int questionId)
-        {
-            var answers = await _context.Answers
-                .Where(a => a.QuestionId == questionId)
-                .ToListAsync();
-
-            return Ok(answers);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(Answer answer)
-        {
-            answer.AnsweredAt = DateTime.Now;
-            _context.Answers.Add(answer);
-
-            var question = await _context.Questions.FindAsync(answer.QuestionId);
-            if (question != null)
-            {
-                question.Status = "Answered";
-            }
-
-            await _context.SaveChangesAsync();
-            return Ok(answer);
-        }
+        return Ok();
     }
 }

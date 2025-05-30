@@ -11,7 +11,7 @@ namespace EngineeringManagementSystem.API.Models
 
         public int AskedByUserId { get; set; }
 
-        public int DocumentRevisionId { get; set; }
+        public int DocumentId { get; set; }
 
         public required string QuestionText { get; set; }
 

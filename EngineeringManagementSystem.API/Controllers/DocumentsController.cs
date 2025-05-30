@@ -1,4 +1,5 @@
 ﻿using EngineeringManagementSystem.API.Data;
+using EngineeringManagementSystem.API.DTOs;
 using EngineeringManagementSystem.API.Models;
 using EngineeringManagementSystem.API.Requests;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,49 @@ namespace EngineeringManagementSystem.API.Controllers
             return doc;
         }
 
+        [HttpGet("byProject/{projectId}")]
+        public async Task<ActionResult<IEnumerable<DocumentDTO>>> GetByProject(int projectId)
+        {
+            try
+            {
+                var docs = await _context.Documents
+                    .Where(d => d.EngProjId == projectId)
+                    .Select(d => new DocumentDTO
+                    {
+                        DocumentId = d.DocumentId,
+                        DocName = d.DocName,
+                        FileName = d.DocName,
+                        PathDoc = d.PathDoc,
+                        IsReleased = d.IsReleased,
+                        Rev = d.Rev.ToString(),
+                        PartNumberDoc = d.PartNumberDoc,
+                        ReleaseDate = d.ReleaseDate,
+
+                        // שימוש בשמות מחברים אם קיימים
+                        Author = _context.Users.FirstOrDefault(u => u.UserId == d.AuthorId) != null
+                                    ? _context.Users.FirstOrDefault(u => u.UserId == d.AuthorId).FullName
+                                    : null,
+
+                        Reviewer = d.ReviewerId != null && _context.Users.FirstOrDefault(u => u.UserId == d.ReviewerId) != null
+                                    ? _context.Users.FirstOrDefault(u => u.UserId == d.ReviewerId).FullName
+                                    : null,
+
+                        Approver = d.ApproverId != null && _context.Users.FirstOrDefault(u => u.UserId == d.ApproverId) != null
+                                    ? _context.Users.FirstOrDefault(u => u.UserId == d.ApproverId).FullName
+                                    : null
+                    })
+                    .ToListAsync();
+
+                return Ok(docs);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"שגיאה בשרת: {ex.Message}");
+            }
+        }
+
+
+
         // POST: api/Documents
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] DocumentRequest request)
@@ -61,7 +105,9 @@ namespace EngineeringManagementSystem.API.Controllers
                 ReviewerSigned = false,
                 ApproverSigned = false,
                 IsReleased = false,
-                ReleaseDate = null
+                ReleaseDate = null,
+                EngProjId = request.EngProjId
+
             };
 
             _context.Documents.Add(doc);
