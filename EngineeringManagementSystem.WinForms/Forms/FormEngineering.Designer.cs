@@ -40,6 +40,7 @@
             this.lblQuestions = new System.Windows.Forms.Label();
             this.dataGridQuestions = new System.Windows.Forms.DataGridView();
             this.btnAnswerQuestion = new System.Windows.Forms.Button();
+            this.btnNewRevision = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDocuments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridQuestions)).BeginInit();
             this.SuspendLayout();
@@ -67,17 +68,17 @@
             // dataGridDocuments
             // 
             this.dataGridDocuments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDocuments.Location = new System.Drawing.Point(681, 218);
+            this.dataGridDocuments.Location = new System.Drawing.Point(670, 218);
             this.dataGridDocuments.Name = "dataGridDocuments";
             this.dataGridDocuments.RowHeadersWidth = 102;
             this.dataGridDocuments.RowTemplate.Height = 40;
-            this.dataGridDocuments.Size = new System.Drawing.Size(2142, 339);
+            this.dataGridDocuments.Size = new System.Drawing.Size(2332, 522);
             this.dataGridDocuments.TabIndex = 2;
             this.dataGridDocuments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnOpenDoc
             // 
-            this.btnOpenDoc.Location = new System.Drawing.Point(681, 596);
+            this.btnOpenDoc.Location = new System.Drawing.Point(670, 782);
             this.btnOpenDoc.Name = "btnOpenDoc";
             this.btnOpenDoc.Size = new System.Drawing.Size(424, 60);
             this.btnOpenDoc.TabIndex = 3;
@@ -87,7 +88,7 @@
             // 
             // btnEditDoc
             // 
-            this.btnEditDoc.Location = new System.Drawing.Point(1132, 596);
+            this.btnEditDoc.Location = new System.Drawing.Point(1143, 782);
             this.btnEditDoc.Name = "btnEditDoc";
             this.btnEditDoc.Size = new System.Drawing.Size(390, 60);
             this.btnEditDoc.TabIndex = 4;
@@ -97,7 +98,7 @@
             // 
             // btnDeleteDoc
             // 
-            this.btnDeleteDoc.Location = new System.Drawing.Point(1548, 596);
+            this.btnDeleteDoc.Location = new System.Drawing.Point(1560, 782);
             this.btnDeleteDoc.Name = "btnDeleteDoc";
             this.btnDeleteDoc.Size = new System.Drawing.Size(360, 60);
             this.btnDeleteDoc.TabIndex = 5;
@@ -107,7 +108,7 @@
             // 
             // btnReleaseDoc
             // 
-            this.btnReleaseDoc.Location = new System.Drawing.Point(1937, 596);
+            this.btnReleaseDoc.Location = new System.Drawing.Point(1952, 782);
             this.btnReleaseDoc.Name = "btnReleaseDoc";
             this.btnReleaseDoc.Size = new System.Drawing.Size(382, 60);
             this.btnReleaseDoc.TabIndex = 6;
@@ -117,9 +118,9 @@
             // 
             // btnAddDoc
             // 
-            this.btnAddDoc.Location = new System.Drawing.Point(2349, 596);
+            this.btnAddDoc.Location = new System.Drawing.Point(2359, 782);
             this.btnAddDoc.Name = "btnAddDoc";
-            this.btnAddDoc.Size = new System.Drawing.Size(474, 60);
+            this.btnAddDoc.Size = new System.Drawing.Size(365, 60);
             this.btnAddDoc.TabIndex = 7;
             this.btnAddDoc.Text = "Add Doc";
             this.btnAddDoc.UseVisualStyleBackColor = true;
@@ -128,7 +129,7 @@
             // lblEngProj
             // 
             this.lblEngProj.AutoSize = true;
-            this.lblEngProj.Location = new System.Drawing.Point(675, 157);
+            this.lblEngProj.Location = new System.Drawing.Point(99, 166);
             this.lblEngProj.Name = "lblEngProj";
             this.lblEngProj.Size = new System.Drawing.Size(286, 32);
             this.lblEngProj.TabIndex = 8;
@@ -137,7 +138,7 @@
             // lblQuestions
             // 
             this.lblQuestions.AutoSize = true;
-            this.lblQuestions.Location = new System.Drawing.Point(675, 703);
+            this.lblQuestions.Location = new System.Drawing.Point(675, 845);
             this.lblQuestions.Name = "lblQuestions";
             this.lblQuestions.Size = new System.Drawing.Size(151, 32);
             this.lblQuestions.TabIndex = 9;
@@ -147,17 +148,17 @@
             // dataGridQuestions
             // 
             this.dataGridQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridQuestions.Location = new System.Drawing.Point(681, 756);
+            this.dataGridQuestions.Location = new System.Drawing.Point(670, 911);
             this.dataGridQuestions.Name = "dataGridQuestions";
             this.dataGridQuestions.ReadOnly = true;
             this.dataGridQuestions.RowHeadersWidth = 102;
-            this.dataGridQuestions.Size = new System.Drawing.Size(2142, 294);
+            this.dataGridQuestions.Size = new System.Drawing.Size(2332, 294);
             this.dataGridQuestions.TabIndex = 10;
             this.dataGridQuestions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridQuestions_CellContentClick);
             // 
             // btnAnswerQuestion
             // 
-            this.btnAnswerQuestion.Location = new System.Drawing.Point(681, 1118);
+            this.btnAnswerQuestion.Location = new System.Drawing.Point(681, 1244);
             this.btnAnswerQuestion.Name = "btnAnswerQuestion";
             this.btnAnswerQuestion.Size = new System.Drawing.Size(226, 56);
             this.btnAnswerQuestion.TabIndex = 11;
@@ -165,11 +166,22 @@
             this.btnAnswerQuestion.UseVisualStyleBackColor = true;
             this.btnAnswerQuestion.Click += new System.EventHandler(this.btnAnswerQuestion_Click);
             // 
+            // btnNewRevision
+            // 
+            this.btnNewRevision.Location = new System.Drawing.Point(2751, 782);
+            this.btnNewRevision.Name = "btnNewRevision";
+            this.btnNewRevision.Size = new System.Drawing.Size(239, 60);
+            this.btnNewRevision.TabIndex = 12;
+            this.btnNewRevision.Text = "New Revision";
+            this.btnNewRevision.UseVisualStyleBackColor = true;
+            this.btnNewRevision.Click += new System.EventHandler(this.btnNewRevision_Click);
+            // 
             // FormEngineering
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2894, 1262);
+            this.ClientSize = new System.Drawing.Size(3065, 1449);
+            this.Controls.Add(this.btnNewRevision);
             this.Controls.Add(this.btnAnswerQuestion);
             this.Controls.Add(this.dataGridQuestions);
             this.Controls.Add(this.lblQuestions);
@@ -206,5 +218,6 @@
         private System.Windows.Forms.Label lblQuestions;
         private System.Windows.Forms.DataGridView dataGridQuestions;
         private System.Windows.Forms.Button btnAnswerQuestion;
+        private System.Windows.Forms.Button btnNewRevision;
     }
 }

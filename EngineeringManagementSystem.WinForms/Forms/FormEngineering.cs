@@ -13,6 +13,7 @@ using EngineeringManagementSystem.WinForms.Models;
 using System.IO;
 using EngineeringManagementSystem.WinForms.Forms;
 using System.Linq.Expressions;
+using System.Diagnostics;
 
 
 
@@ -121,10 +122,16 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
             var doc = (DocumentDTO)dataGridDocuments.SelectedRows[0].DataBoundItem;
 
-            // נניח PathDoc מציין את הנתיב על הדיסק או קישור קובץ
             if (!string.IsNullOrEmpty(doc.PathDoc) && File.Exists(doc.PathDoc))
             {
-                System.Diagnostics.Process.Start("explorer", doc.PathDoc);
+                var process = new System.Diagnostics.Process();
+                process.StartInfo = new ProcessStartInfo
+                {
+                    FileName = doc.PathDoc,
+                    UseShellExecute = true,
+                    Verb = doc.IsReleased ? "open" : "edit"
+                };
+                process.Start();
             }
             else
             {
@@ -141,12 +148,31 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
             if (doc.IsReleased)
             {
-                MessageBox.Show("לא ניתן לערוך מסמך ששוחרר.");
+                var result = MessageBox.Show(
+                    "המסמך משוחרר. האם ברצונך ליצור מהדורה חדשה?",
+                    "מסמך משוחרר",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    // פתח מסך יצירת מהדורה חדשה
+                    var createNewRevForm = new FormCreateNewRevision(doc);
+                    createNewRevForm.ShowDialog();
+
+                    // רענון המסמכים לאחר יצירת מהדורה
+                    await LoadDocumentsForProject((int)cmbProjects.SelectedValue);
+                }
+
                 return;
             }
 
-            new FormEditDocument(doc).ShowDialog(); // מסך עריכה נפרד
+            // אם המסמך לא משוחרר – פתח עריכה רגילה
+            new FormEditDocument(doc).ShowDialog();
             await LoadDocumentsForProject((int)cmbProjects.SelectedValue); // רענון
+
+
         }
 
         private async void btnDeleteDoc_Click(object sender, EventArgs e)
@@ -272,6 +298,47 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
             // רענון אחרי סגירת התשובה
             _ = LoadQuestionsForDocument(question.DocumentId);
+        }
+
+        private async void btnNewRevision_Click(object sender, EventArgs e)
+        {
+            if (dataGridDocuments.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("בחר מסמך קודם.");
+                return;
+            }
+
+            var selectedDoc = (DocumentDTO)dataGridDocuments.SelectedRows[0].DataBoundItem;
+
+            if (!selectedDoc.IsReleased)
+            {
+                MessageBox.Show("ניתן ליצור מהדורה רק ממסמך ששוחרר.");
+                return;
+            }
+
+            var doc = (DocumentDTO)dataGridDocuments.SelectedRows[0].DataBoundItem;
+
+            if (doc.IsReleased)
+            {
+                var result = MessageBox.Show(
+                    "המסמך משוחרר. האם ברצונך ליצור מהדורה חדשה?",
+                    "מסמך משוחרר",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    // פתח מסך יצירת מהדורה חדשה
+                    var createNewRevForm = new FormCreateNewRevision(doc);
+                    createNewRevForm.ShowDialog();
+
+                    // רענון המסמכים לאחר יצירת מהדורה
+                    await LoadDocumentsForProject((int)cmbProjects.SelectedValue);
+                }
+
+                return;
+            }
         }
     }
 }

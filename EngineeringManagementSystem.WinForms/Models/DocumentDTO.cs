@@ -20,5 +20,7 @@ namespace EngineeringManagementSystem.WinForms.Models
         public string Reviewer { get; set; }
         public string Approver { get; set; }
         public DateTime? ReleaseDate { get; set; }
+
+        public int EngProjId { get; set; }
     }
 }
