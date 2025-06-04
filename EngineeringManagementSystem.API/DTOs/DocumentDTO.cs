@@ -3,6 +3,8 @@
     public class DocumentDTO
     {
         public int DocumentId { get; set; }
+
+
         public string DocName { get; set; }
         public string Rev { get; set; }
         public bool IsReleased { get; set; }

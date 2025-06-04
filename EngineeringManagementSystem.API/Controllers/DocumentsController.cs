@@ -55,6 +55,7 @@ namespace EngineeringManagementSystem.API.Controllers
                     .Select(d => new DocumentDTO
                     {
                         DocumentId = d.DocumentId,
+
                         DocName = d.DocName,
                         FileName = d.DocName,
                         PathDoc = d.PathDoc,

@@ -5,7 +5,8 @@ namespace EngineeringManagementSystem.API.DTOs
  
         public class QuestionDTO
         {
-        
+
+        public int QuestionId { get; set; }            // מזהה ייחודי של השאלה
         public string QuestionText { get; set; }
         public int DocumentId { get; set; }
         public int AskedByUserId { get; set; }

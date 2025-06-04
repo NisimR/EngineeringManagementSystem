@@ -37,6 +37,7 @@ namespace EngineeringManagementSystem.API.Controllers
 
             var result = questions.Select(q => new QuestionDTO
             {
+                QuestionId = q.QuestionId,
                 QuestionText = q.QuestionText,
                 DocumentId = q.DocumentId,
                 AskedByUserId = q.AskedByUserId,
@@ -57,6 +58,7 @@ namespace EngineeringManagementSystem.API.Controllers
 
             var result = questions.Select(q => new QuestionDTO
             {
+                QuestionId = q.QuestionId,
                 QuestionText = q.QuestionText,
                 DocumentId = q.DocumentId,
                 AskedByUserId = q.AskedByUserId,
