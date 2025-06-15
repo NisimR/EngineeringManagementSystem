@@ -182,9 +182,9 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
             var doc = (DocumentDTO)dataGridDocuments.SelectedRows[0].DataBoundItem;
 
-            if (doc.IsReleased)
+            if (doc.IsReleased && Session.Role != "Admin")
             {
-                MessageBox.Show("לא ניתן למחוק מסמך משוחרר.");
+                MessageBox.Show("רק אדמין יכול למחוק מסמך משוחרר.");
                 return;
             }
 
@@ -198,6 +198,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
                 await LoadDocumentsForProject((int)cmbProjects.SelectedValue);
             }
         }
+
 
         private async void btnReleaseDoc_Click(object sender, EventArgs e)
         {

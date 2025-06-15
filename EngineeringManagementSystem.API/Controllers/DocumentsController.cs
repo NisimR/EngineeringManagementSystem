@@ -21,6 +21,7 @@ namespace EngineeringManagementSystem.API.Controllers
             _context = context;
         }
 
+
         // helper function – מחפש לפי שם
         private int? GetUserIdByName(string name)
         {
@@ -90,6 +91,15 @@ namespace EngineeringManagementSystem.API.Controllers
             }
         }
 
+        private async Task<int> GetNextPartNumberAsync()
+        {
+            int max = await _context.Documents
+                .OrderByDescending(d => d.PartNumberDoc)
+                .Select(d => d.PartNumberDoc)
+                .FirstOrDefaultAsync();
+
+            return max == 0 ? 100000000 : max + 1;
+        }
 
 
         // POST: api/Documents
@@ -98,10 +108,10 @@ namespace EngineeringManagementSystem.API.Controllers
         {
             var doc = new Document
             {
-                PartNumberDoc = request.PartNumberDoc,
+                PartNumberDoc = await GetNextPartNumberAsync(),
                 PathDoc = request.PathDoc,
                 DocName = request.DocName,
-                Rev = 'A', 
+                Rev = 'A',
                 AuthorId = GetUserIdByName(request.AuthorName),
                 ReviewerId = GetUserIdByName(request.ReviewerName),
                 ApproverId = GetUserIdByName(request.ApproverName),
@@ -130,16 +140,25 @@ namespace EngineeringManagementSystem.API.Controllers
             // חישוב מהדורה חדשה
             char nextRev = existingDoc.Rev >= 'A' && existingDoc.Rev < 'Z'
                 ? (char)(existingDoc.Rev + 1)
+
                 : throw new Exception("המהדורה הגיעה ל-Z ואי אפשר להמשיך.");
 
             // יצירת שם קובץ ונתיב חדש
             var newFileName = $"{existingDoc.DocName}_{nextRev}.docx";
             var newFilePath = Path.Combine(Path.GetDirectoryName(existingDoc.PathDoc), newFileName);
 
+            // שלב 1: מציאת המספר הכי גבוה הקיים
+            int nextPartNumber = await _context.Documents
+                .OrderByDescending(d => d.PartNumberDoc)
+                .Select(d => d.PartNumberDoc)
+                .FirstOrDefaultAsync();
+
+            nextPartNumber = nextPartNumber == 0 ? 100000000 : nextPartNumber + 1;
+
             var newDoc = new Document
             {
                 DocName = existingDoc.DocName,
-                PartNumberDoc = existingDoc.PartNumberDoc,
+                PartNumberDoc = nextPartNumber,
                 Rev = nextRev,
                 PathDoc = newFilePath,
                 AuthorId = GetUserIdByName(request.AuthorName),
@@ -236,8 +255,27 @@ namespace EngineeringManagementSystem.API.Controllers
             existingDoc.ReviewerId = GetUserIdByName(request.ReviewerName);
             existingDoc.ApproverId = GetUserIdByName(request.ApproverName);
 
+
+
             await _context.SaveChangesAsync();
             return Ok(new { Message = "המסמך עודכן בהצלחה" });
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var doc = await _context.Documents.FindAsync(id);
+            if (doc == null)
+                return NotFound("המסמך לא נמצא.");
+
+            // ❗ אם המסמך משוחרר – רק Admin יכול למחוק
+            var role = User.FindFirst("role")?.Value;
+            if (doc.IsReleased && role != "Admin")
+                return Forbid("רק אדמין יכול למחוק מסמך ששוחרר.");
+
+            _context.Documents.Remove(doc);
+            await _context.SaveChangesAsync();
+            return Ok("המסמך נמחק בהצלחה.");
         }
 
 

@@ -14,7 +14,6 @@ namespace EngineeringManagementSystem.WinForms.Models
         public string AuthorName { get; set; }
         public string ReviewerName { get; set; }
         public string ApproverName { get; set; }
-
         public int EngProjId { get; set; }
     }
 }

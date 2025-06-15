@@ -32,10 +32,10 @@
             this.lblProjectName = new System.Windows.Forms.Label();
             this.txtPathDoc = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.cmbAuthor = new System.Windows.Forms.ComboBox();
             this.cmbReviewer = new System.Windows.Forms.ComboBox();
             this.cmbApprover = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblAuthor = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtDocName
@@ -45,7 +45,7 @@
             this.txtDocName.Size = new System.Drawing.Size(417, 38);
             this.txtDocName.TabIndex = 0;
             this.txtDocName.Text = "Name Doc";
-            this.txtDocName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            //this.txtDocName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lblProjectName
             // 
@@ -73,15 +73,6 @@
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-            // 
-            // cmbAuthor
-            // 
-            this.cmbAuthor.FormattingEnabled = true;
-            this.cmbAuthor.Location = new System.Drawing.Point(87, 410);
-            this.cmbAuthor.Name = "cmbAuthor";
-            this.cmbAuthor.Size = new System.Drawing.Size(417, 39);
-            this.cmbAuthor.TabIndex = 4;
-            this.cmbAuthor.Text = "Author";
             // 
             // cmbReviewer
             // 
@@ -111,15 +102,24 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // lblAuthor
+            // 
+            this.lblAuthor.AutoSize = true;
+            this.lblAuthor.Location = new System.Drawing.Point(81, 411);
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Size = new System.Drawing.Size(180, 32);
+            this.lblAuthor.TabIndex = 8;
+            this.lblAuthor.Text = "Author Name";
+            // 
             // FormAddDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1752, 997);
+            this.Controls.Add(this.lblAuthor);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cmbApprover);
             this.Controls.Add(this.cmbReviewer);
-            this.Controls.Add(this.cmbAuthor);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.txtPathDoc);
             this.Controls.Add(this.lblProjectName);
@@ -138,9 +138,9 @@
         private System.Windows.Forms.Label lblProjectName;
         private System.Windows.Forms.TextBox txtPathDoc;
         private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.ComboBox cmbAuthor;
         private System.Windows.Forms.ComboBox cmbReviewer;
         private System.Windows.Forms.ComboBox cmbApprover;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblAuthor;
     }
 }

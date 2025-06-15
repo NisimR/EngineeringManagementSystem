@@ -34,11 +34,12 @@
             this.cmbReviewer = new System.Windows.Forms.ComboBox();
             this.cmbApprover = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblRevision = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtDocName
             // 
-            this.txtDocName.Location = new System.Drawing.Point(151, 80);
+            this.txtDocName.Location = new System.Drawing.Point(151, 177);
             this.txtDocName.Name = "txtDocName";
             this.txtDocName.Size = new System.Drawing.Size(349, 38);
             this.txtDocName.TabIndex = 0;
@@ -47,7 +48,7 @@
             // 
             // txtPathDoc
             // 
-            this.txtPathDoc.Location = new System.Drawing.Point(151, 143);
+            this.txtPathDoc.Location = new System.Drawing.Point(151, 301);
             this.txtPathDoc.Name = "txtPathDoc";
             this.txtPathDoc.Size = new System.Drawing.Size(349, 38);
             this.txtPathDoc.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(557, 142);
+            this.btnBrowse.Location = new System.Drawing.Point(560, 301);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(200, 38);
             this.btnBrowse.TabIndex = 2;
@@ -67,7 +68,7 @@
             // cmbReviewer
             // 
             this.cmbReviewer.FormattingEnabled = true;
-            this.cmbReviewer.Location = new System.Drawing.Point(151, 293);
+            this.cmbReviewer.Location = new System.Drawing.Point(151, 366);
             this.cmbReviewer.Name = "cmbReviewer";
             this.cmbReviewer.Size = new System.Drawing.Size(349, 39);
             this.cmbReviewer.TabIndex = 3;
@@ -77,7 +78,7 @@
             // cmbApprover
             // 
             this.cmbApprover.FormattingEnabled = true;
-            this.cmbApprover.Location = new System.Drawing.Point(151, 358);
+            this.cmbApprover.Location = new System.Drawing.Point(151, 445);
             this.cmbApprover.Name = "cmbApprover";
             this.cmbApprover.Size = new System.Drawing.Size(349, 39);
             this.cmbApprover.TabIndex = 4;
@@ -94,11 +95,21 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // lblRevision
+            // 
+            this.lblRevision.AutoSize = true;
+            this.lblRevision.Location = new System.Drawing.Point(554, 183);
+            this.lblRevision.Name = "lblRevision";
+            this.lblRevision.Size = new System.Drawing.Size(72, 32);
+            this.lblRevision.TabIndex = 6;
+            this.lblRevision.Text = "REV";
+            // 
             // FormEditDocument
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1678, 837);
+            this.Controls.Add(this.lblRevision);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cmbApprover);
             this.Controls.Add(this.cmbReviewer);
@@ -121,5 +132,6 @@
         private System.Windows.Forms.ComboBox cmbApprover;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.Label lblRevision;
     }
 }
