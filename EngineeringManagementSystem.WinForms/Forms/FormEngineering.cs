@@ -25,6 +25,17 @@ namespace EngineeringManagementSystem.WinForms.Forms
         private async void FormEngineering_Load(object sender, EventArgs e)
         {
             await LoadProjectsAsync();
+            await LoadPendingDocumentsForUser();
+
+            this.Controls.Add(dataGridPendingDocs);
+            this.Controls.Add(btnApprove);
+            this.Controls.Add(btnReject);
+            this.Controls.Add(btnOpen);
+
+            btnApprove.Click += btnApprove_Click;
+            btnReject.Click += btnReject_Click;
+            btnOpen.Click += btnOpen_Click;
+
         }
 
         private async Task LoadProjectsAsync()
@@ -46,6 +57,18 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
             InitializeComponent();
         }
+
+        private async Task LoadPendingDocumentsForUser()
+        {
+            var client = new HttpClient();
+            var userId = Session.UserId;
+            var result = await client.GetFromJsonAsync<List<DocumentDTO>>($"https://localhost:7251/api/Documents/pendingForUser/{userId}");
+            dataGridPendingDocs.DataSource = result;
+            client.Dispose();
+        }
+
+
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -209,18 +232,22 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
             using (var client = new HttpClient())
             {
-                var response = await client.PostAsync($"https://localhost:7251/api/Documents/{doc.DocumentId}/release", null);
+                // הפעולה מאשרת בשם היוזר הנוכחי שהוא ה־Author
+                var response = await client.PostAsync($"https://localhost:7251/api/Documents/{doc.DocumentId}/approve/{Session.UserId}", null);
+
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("המסמך שוחרר.");
+                    MessageBox.Show("המסמך הועבר לבדיקה.");
                     await LoadDocumentsForProject((int)cmbProjects.SelectedValue);
+                    await LoadPendingDocumentsForUser(); // טוען את הגריד של החתימות מחדש
                 }
                 else
                 {
-                    MessageBox.Show("לא ניתן לשחרר את המסמך. ודא שכל החתימות קיימות.");
+                    MessageBox.Show("שגיאה בשחרור המסמך.");
                 }
             }
         }
+
 
         /// <summary>
         /// בעת בחירת שורה במסמכים – טען שאלות על המסמך.
@@ -340,6 +367,64 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
                 return;
             }
+        }
+
+        private async void btnApprove_Click(object sender, EventArgs e)
+        {
+            if (dataGridPendingDocs.SelectedRows.Count == 0) return;
+            var doc = (DocumentDTO)dataGridPendingDocs.SelectedRows[0].DataBoundItem;
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync($"https://localhost:7251/api/Documents/{doc.DocumentId}/approve/{Session.UserId}", null);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("אושר בהצלחה");
+                    await LoadPendingDocumentsForUser();
+                    await LoadDocumentsForProject((int)cmbProjects.SelectedValue);
+                }
+                else MessageBox.Show("שגיאה באישור");
+            }
+        }
+
+
+        private async void btnReject_Click(object sender, EventArgs e)
+        {
+            if (dataGridPendingDocs.SelectedRows.Count == 0) return;
+            var doc = (DocumentDTO)dataGridPendingDocs.SelectedRows[0].DataBoundItem;
+
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync($"https://localhost:7251/api/Documents/{doc.DocumentId}/reject/{Session.UserId}", null);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("נדחה בהצלחה");
+                    await LoadPendingDocumentsForUser();
+                    await LoadDocumentsForProject((int)cmbProjects.SelectedValue);
+                }
+                else MessageBox.Show("שגיאה בדחייה");
+            }
+        }
+
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            if (dataGridPendingDocs.SelectedRows.Count == 0) return;
+            var doc = (DocumentDTO)dataGridPendingDocs.SelectedRows[0].DataBoundItem;
+            if (File.Exists(doc.PathDoc))
+                Process.Start("explorer", doc.PathDoc);
+            else
+                MessageBox.Show("הקובץ לא נמצא");
+        }
+
+        private void dataGridPendingDocs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

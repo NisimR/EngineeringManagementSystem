@@ -5,6 +5,8 @@ using EngineeringManagementSystem.API.Models;
 using EngineeringManagementSystem.API.Requests;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
+
 
 
 
@@ -190,6 +192,85 @@ namespace EngineeringManagementSystem.API.Controllers
                 newId = newDoc.DocumentId,
                 newPath = newDoc.PathDoc
             });
+        }
+
+        [HttpPost("{id}/startCycle/{userId}")]
+        public async Task<IActionResult> StartDocumentCycle(int id, int userId)
+        {
+            var doc = await _context.Documents.FindAsync(id);
+            if (doc == null) return NotFound("Document not found.");
+
+            // רק אם המשתמש הוא המחבר של המסמך – אפשר להתחיל את הסבב
+            if (doc.AuthorId != userId)
+                return Forbid("רק מחבר המסמך יכול לשחרר אותו.");
+
+            if (doc.AuthorSigned)
+                return BadRequest("הסבב כבר התחיל.");
+
+            doc.AuthorSigned = true;
+            await _context.SaveChangesAsync();
+            return Ok("הסבב התחיל. נחתם על ידי העורך.");
+        }
+
+
+
+
+        [HttpPost("{id}/approve/{userId}")]
+        public async Task<IActionResult> ApproveDocument(int id, int userId)
+        {
+            var doc = await _context.Documents.FindAsync(id);
+            if (doc == null) return NotFound();
+
+            if (doc.AuthorId == userId)
+                doc.AuthorSigned = true;
+            else if (doc.ReviewerId == userId && doc.AuthorSigned)
+                doc.ReviewerSigned = true;
+            else if (doc.ApproverId == userId && doc.AuthorSigned && doc.ReviewerSigned)
+            {
+                doc.ApproverSigned = true;
+                doc.IsReleased = true;
+                doc.ReleaseDate = DateTime.Now;
+            }
+            else return Forbid();
+
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPost("{id}/reject/{userId}")]
+        public async Task<IActionResult> RejectDocument(int id, int userId)
+        {
+            var doc = await _context.Documents.FindAsync(id);
+            if (doc == null) return NotFound();
+
+            // איפוס כל החתימות
+            doc.AuthorSigned = false;
+            doc.ReviewerSigned = false;
+            doc.ApproverSigned = false;
+
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpGet("pendingForUser/{userId}")]
+        public async Task<ActionResult<IEnumerable<DocumentDTO>>> GetPendingForUser(int userId)
+        {
+            var docs = await _context.Documents
+                .Where(d =>
+                    (d.AuthorId == userId && !d.AuthorSigned) ||
+                    (d.ReviewerId == userId && d.AuthorSigned && !d.ReviewerSigned) ||
+                    (d.ApproverId == userId && d.AuthorSigned && d.ReviewerSigned && !d.ApproverSigned))
+                .Select(d => new DocumentDTO
+                {
+                    DocumentId = d.DocumentId,
+                    DocName = d.DocName,
+                    PathDoc = d.PathDoc,
+                    IsReleased = d.IsReleased,
+                    PartNumberDoc = d.PartNumberDoc,
+                    Rev = d.Rev.ToString()
+                }).ToListAsync();
+
+            return Ok(docs);
         }
 
 

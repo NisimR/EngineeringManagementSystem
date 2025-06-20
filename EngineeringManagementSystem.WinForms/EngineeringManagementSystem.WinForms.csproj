@@ -124,6 +124,12 @@
     <Compile Include="Forms\FormEngineering.Designer.cs">
       <DependentUpon>FormEngineering.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormEngineeringManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEngineeringManagement.Designer.cs">
+      <DependentUpon>FormEngineeringManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,12 @@
     </Compile>
     <Compile Include="Forms\FormProduction.Designer.cs">
       <DependentUpon>FormProduction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormProductionManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormProductionManagement.Designer.cs">
+      <DependentUpon>FormProductionManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormUsersAdmin.cs">
       <SubType>Form</SubType>
@@ -193,8 +205,14 @@
     <EmbeddedResource Include="Forms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormManagement.resx">
+      <DependentUpon>FormManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormProduction.resx">
       <DependentUpon>FormProduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormProductionManagement.resx">
+      <DependentUpon>FormProductionManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormUsersAdmin.resx">
       <DependentUpon>FormUsersAdmin.cs</DependentUpon>

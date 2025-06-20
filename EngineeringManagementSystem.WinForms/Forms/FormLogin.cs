@@ -68,7 +68,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
                     this.Hide();
 
                     if (Session.Role == "Admin")
-                        new FormUsersAdmin().Show(); // רק אם קיים
+                        new MainForm().Show(); // רק אם קיים
                     else
                         new MainForm().Show(); // לכל שאר המשתמשים
                 }
