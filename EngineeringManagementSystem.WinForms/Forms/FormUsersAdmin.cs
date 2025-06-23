@@ -22,10 +22,10 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
             InitializeComponent();
 
-            btnAddUser.Click += btnAddUser_Click;
-            btnEditUser.Click += btnEditUser_Click;
-            btnDeleteUser.Click += btnDeleteUser_Click;
-            btnBack.Click += btnBack_Click;
+            //btnAddUser.Click += btnAddUser_Click;
+            //btnEditUser.Click += btnEditUser_Click;
+            //btnDeleteUser.Click += btnDeleteUser_Click;
+            //btnBack.Click += btnBack_Click;
 
             LoadUsers(); 
         }
@@ -60,7 +60,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            //new FormAddOrEditUser().ShowDialog();
+           
             new FormAddUser().ShowDialog();
             LoadUsers();
         }
@@ -101,7 +101,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
             var user = (UserDTO)dataGridUsers.SelectedRows[0].DataBoundItem;
             //new FormAddOrEditUser(user).ShowDialog();
-            //new FormEditUser(user).ShowDialog();
+            new FormEditUser(user).ShowDialog();
             LoadUsers();
         }
     }

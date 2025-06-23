@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EngineeringManagementSystem.WinForms.Models;
-
 using System.Net.Http.Json;
 
 
@@ -21,7 +20,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
             InitializeComponent();
             LoadRoles();
-            btnAdd.Click += btnAdd_Click;
+            //btnAdd.Click += btnAdd_Click;
             btnCancel.Click += btnCancel_Click;
         }
 

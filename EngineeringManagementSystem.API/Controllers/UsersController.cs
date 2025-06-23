@@ -63,8 +63,13 @@ namespace EngineeringManagementSystem.API.Controllers
         [HttpPost]
         public async Task<ActionResult<UserDTO>> PostUser([FromBody] UserRequest request)
         {
+            // 🔒 בדיקה אם שם המשתמש כבר קיים
+            var exists = await _context.Users.AnyAsync(u => u.Username == request.UserName);
+            if (exists)
+            {
+                return BadRequest("שם המשתמש כבר קיים במערכת.");
+            }
 
-            
             string hashedPassword = HashPassword(request.Password);
 
             var user = new User
@@ -92,6 +97,7 @@ namespace EngineeringManagementSystem.API.Controllers
 
             return CreatedAtAction(nameof(GetUser), new { id = user.UserId }, dto);
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, [FromBody] UserRequest request)
