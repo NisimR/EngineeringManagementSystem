@@ -60,7 +60,8 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            new FormAddOrEditUser().ShowDialog();
+            //new FormAddOrEditUser().ShowDialog();
+            new FormAddUser().ShowDialog();
             LoadUsers();
         }
 
@@ -99,7 +100,8 @@ namespace EngineeringManagementSystem.WinForms.Forms
                 return;
 
             var user = (UserDTO)dataGridUsers.SelectedRows[0].DataBoundItem;
-            new FormAddOrEditUser(user).ShowDialog();
+            //new FormAddOrEditUser(user).ShowDialog();
+            //new FormEditUser(user).ShowDialog();
             LoadUsers();
         }
     }

@@ -31,5 +31,10 @@ namespace EngineeringManagementSystem.WinForms.Forms
             //cmbRole.SelectedItem = _user.Role;
             // וכן הלאה...
         }
+
+        private void FormAddOrEditUser_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -46,8 +46,12 @@ namespace EngineeringManagementSystem.API.Controllers
             return user;
         }
 
-
-
+        [HttpGet("exists/{username}")]
+        public async Task<ActionResult<bool>> UsernameExists(string username)
+        {
+            var exists = await _context.Users.AnyAsync(u => u.Username == username);
+            return Ok(exists); // מחזיר true או false עם קוד 200
+        }
 
         //מקבלת סיסמא ועושה האשינג
         private string HashPassword(string plainPassword)

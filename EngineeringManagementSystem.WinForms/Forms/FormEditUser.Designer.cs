@@ -1,6 +1,6 @@
 ﻿namespace EngineeringManagementSystem.WinForms.Forms
 {
-    partial class FormAddOrEditUser
+    partial class FormEditUser
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // FormAddOrEditUser
+            // FormEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2335, 921);
-            this.Name = "FormAddOrEditUser";
-            this.Text = "FormAddOrEditUser";
-            this.Load += new System.EventHandler(this.FormAddOrEditUser_Load);
+            this.ClientSize = new System.Drawing.Size(1367, 783);
+            this.Name = "FormEditUser";
+            this.Text = "FormEditUser";
             this.ResumeLayout(false);
 
         }
