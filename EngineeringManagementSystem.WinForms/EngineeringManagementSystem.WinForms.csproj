@@ -100,6 +100,12 @@
     <Compile Include="Forms\FormAddDocument.Designer.cs">
       <DependentUpon>FormAddDocument.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormAddOrEditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddOrEditUser.Designer.cs">
+      <DependentUpon>FormAddOrEditUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormAnswerQuestion.cs">
       <SubType>Form</SubType>
     </Compile>
