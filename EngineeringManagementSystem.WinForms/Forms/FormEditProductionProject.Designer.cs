@@ -1,6 +1,6 @@
 ﻿namespace EngineeringManagementSystem.WinForms.Forms
 {
-    partial class FormEditEngineeringProject
+    partial class FormEditProductionProject
     {
         /// <summary>
         /// Required designer variable.
@@ -28,71 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.cboManagers = new System.Windows.Forms.ComboBox();
             this.txtProjectName = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.cmbProjectManager = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
+            // 
+            // cboManagers
+            // 
+            this.cboManagers.FormattingEnabled = true;
+            this.cboManagers.Location = new System.Drawing.Point(329, 223);
+            this.cboManagers.Name = "cboManagers";
+            this.cboManagers.Size = new System.Drawing.Size(330, 39);
+            this.cboManagers.TabIndex = 0;
+            this.cboManagers.Text = "Managers";
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(512, 97);
+            this.txtProjectName.Location = new System.Drawing.Point(329, 89);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(341, 38);
-            this.txtProjectName.TabIndex = 0;
-            this.txtProjectName.Text = "Project Name";
+            this.txtProjectName.Size = new System.Drawing.Size(330, 38);
+            this.txtProjectName.TabIndex = 1;
+            this.txtProjectName.Text = "ProjectName";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(512, 161);
+            this.txtDescription.Location = new System.Drawing.Point(329, 150);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(345, 38);
-            this.txtDescription.TabIndex = 1;
+            this.txtDescription.Size = new System.Drawing.Size(330, 38);
+            this.txtDescription.TabIndex = 2;
             this.txtDescription.Text = "Description";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(512, 312);
+            this.btnSave.Location = new System.Drawing.Point(329, 300);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 66);
-            this.btnSave.TabIndex = 2;
+            this.btnSave.Size = new System.Drawing.Size(160, 60);
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(668, 312);
+            this.btnCancel.Location = new System.Drawing.Point(524, 300);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(126, 66);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Size = new System.Drawing.Size(135, 60);
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // cmbProjectManager
-            // 
-            this.cmbProjectManager.FormattingEnabled = true;
-            this.cmbProjectManager.Location = new System.Drawing.Point(512, 225);
-            this.cmbProjectManager.Name = "cmbProjectManager";
-            this.cmbProjectManager.Size = new System.Drawing.Size(341, 39);
-            this.cmbProjectManager.TabIndex = 4;
-            this.cmbProjectManager.Text = "Project Manager";
-            // 
-            // FormEditEngineeringProject
+            // FormEditProductionProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1354, 684);
-            this.Controls.Add(this.cmbProjectManager);
+            this.ClientSize = new System.Drawing.Size(1028, 679);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtProjectName);
-            this.Name = "FormEditEngineeringProject";
-            this.Text = "FormEditEngineeringProject";
-            this.Load += new System.EventHandler(this.FormEditEngineeringProject_Load);
+            this.Controls.Add(this.cboManagers);
+            this.Name = "FormEditProductionProject";
+            this.Text = "FormEditProductionProject";
+            this.Load += new System.EventHandler(this.FormEditProductionProject_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,10 +100,10 @@
 
         #endregion
 
+        private System.Windows.Forms.ComboBox cboManagers;
         private System.Windows.Forms.TextBox txtProjectName;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ComboBox cmbProjectManager;
     }
 }

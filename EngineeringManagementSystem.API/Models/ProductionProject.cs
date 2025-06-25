@@ -7,7 +7,6 @@ namespace EngineeringManagementSystem.API.Models
         [Key]
         public int ProdProjId { get; set; }
         public string ProjectName { get; set; }
-
         public int ProjectManagerId { get; set; }
 
         [Required]
@@ -15,12 +14,7 @@ namespace EngineeringManagementSystem.API.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        public List<int> Documents { get; set; }
-
-
-
-
-
+        public List<int> ProductionItemId { get; set; } = new List<int>(); 
 
 
     }

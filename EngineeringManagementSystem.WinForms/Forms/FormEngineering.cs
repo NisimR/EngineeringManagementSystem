@@ -26,6 +26,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
             await LoadProjectsAsync();
             await LoadPendingDocumentsForUser();
+            
 
             this.Controls.Add(dataGridPendingDocs);
             this.Controls.Add(btnApprove);
@@ -133,6 +134,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
             dataGridDocuments.SelectionChanged += dataGridDocuments_SelectionChanged;
             await LoadProjectsAsync();
+            LoadPendingDocumentsForUser();
         }
 
         private void btnOpenDoc_Click(object sender, EventArgs e)
@@ -233,7 +235,8 @@ namespace EngineeringManagementSystem.WinForms.Forms
             using (var client = new HttpClient())
             {
                 // הפעולה מאשרת בשם היוזר הנוכחי שהוא ה־Author
-                var response = await client.PostAsync($"https://localhost:7251/api/Documents/{doc.DocumentId}/approve/{Session.UserId}", null);
+                var response = await client.PostAsync($"https://localhost:7251/api/Documents/{doc.DocumentId}/startCycle/{Session.UserId}", null);
+
 
                 if (response.IsSuccessStatusCode)
                 {

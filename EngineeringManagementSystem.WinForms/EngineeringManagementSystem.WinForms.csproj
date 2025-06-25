@@ -106,6 +106,12 @@
     <Compile Include="Forms\FormAddEngineeringProject.Designer.cs">
       <DependentUpon>FormAddEngineeringProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormAddProductionProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddProductionProject.Designer.cs">
+      <DependentUpon>FormAddProductionProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormAddUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,12 @@
     </Compile>
     <Compile Include="Forms\FormEditEngineeringProject.Designer.cs">
       <DependentUpon>FormEditEngineeringProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormEditProductionProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEditProductionProject.Designer.cs">
+      <DependentUpon>FormEditProductionProject.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormEditUser.cs">
       <SubType>Form</SubType>
@@ -172,6 +184,12 @@
     <Compile Include="Forms\FormProduction.Designer.cs">
       <DependentUpon>FormProduction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormProductionItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormProductionItem.Designer.cs">
+      <DependentUpon>FormProductionItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormProductionManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +213,8 @@
     <Compile Include="Models\DocumentDTO.cs" />
     <Compile Include="Models\DocumentRequest.cs" />
     <Compile Include="Models\EngineeringProject.cs" />
+    <Compile Include="Models\ProductionItem.cs" />
+    <Compile Include="Models\ProductionProject.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\QuestionDTO.cs" />
     <Compile Include="Models\QuestionRequest.cs" />
@@ -217,6 +237,9 @@
     <EmbeddedResource Include="Forms\FormAddEngineeringProject.resx">
       <DependentUpon>FormAddEngineeringProject.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAddProductionProject.resx">
+      <DependentUpon>FormAddProductionProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAddUser.resx">
       <DependentUpon>FormAddUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormEditEngineeringProject.resx">
       <DependentUpon>FormEditEngineeringProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEditProductionProject.resx">
+      <DependentUpon>FormEditProductionProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormEditUser.resx">
       <DependentUpon>FormEditUser.cs</DependentUpon>
@@ -249,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormProduction.resx">
       <DependentUpon>FormProduction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormProductionItem.resx">
+      <DependentUpon>FormProductionItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormProductionManagement.resx">
       <DependentUpon>FormProductionManagement.cs</DependentUpon>
