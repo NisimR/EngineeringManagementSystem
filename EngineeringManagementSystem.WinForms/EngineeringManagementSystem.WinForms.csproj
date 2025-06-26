@@ -214,6 +214,7 @@
     <Compile Include="Models\DocumentRequest.cs" />
     <Compile Include="Models\EngineeringProject.cs" />
     <Compile Include="Models\ProductionItem.cs" />
+    <Compile Include="Models\ProductionItemDTO.cs" />
     <Compile Include="Models\ProductionProject.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\QuestionDTO.cs" />

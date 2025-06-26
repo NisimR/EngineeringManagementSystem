@@ -30,7 +30,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
             if (dgvProjects.SelectedRows.Count == 0)
                 return null;
 
-            return Convert.ToInt32(dgvProjects.SelectedRows[0].Cells["ID"].Value);
+            return Convert.ToInt32(dgvProjects.SelectedRows[0].Cells["ProdProjId"].Value);
         }
 
         private async Task LoadUsersAsync()
@@ -68,11 +68,24 @@ namespace EngineeringManagementSystem.WinForms.Forms
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    var items = JsonConvert.DeserializeObject<List<ProductionItem>>(json);
-                    dgvItems.DataSource = items;
+                    var items = JsonConvert.DeserializeObject<List<ProductionItemDTO>>(json);
+
+                    dgvItems.DataSource = items.Select(i => new
+                    {
+                        מזהה = i.Id,
+                        שם_חלק = i.ItemName,
+                        כמות = i.Quantity,
+                        מסמך = i.DocumentNumber,
+                        פרויקט = i.ProjectNumber
+                    }).ToList();
+                }
+                else
+                {
+                    MessageBox.Show("שגיאה בטעינת פריטי הייצור.");
                 }
             }
         }
+
 
         private async Task LoadProjectsAsync()
         {
@@ -90,11 +103,11 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
                     dgvProjects.DataSource = _projects.Select(p => new
                     {
-                        ID = p.ProdProjId,
-                        שם = p.ProjectName,
-                        תיאור = p.Description,
-                        מנהל = _users.FirstOrDefault(u => u.UserId == p.ProjectManagerId)?.FullName ?? "לא ידוע",
-                        נוצר = p.CreatedAt.ToShortDateString()
+                        ProdProjId = p.ProdProjId,
+                        ProjectName = p.ProjectName,
+                        Description = p.Description,
+                        ProjectManager = _users.FirstOrDefault(u => u.UserId == p.ProjectManagerId)?.FullName ?? "לא ידוע",
+                        CreatedAt = p.CreatedAt.ToShortDateString()
                     }).ToList();
                 }
                 else
@@ -109,7 +122,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
             if (dgvProjects.SelectedRows.Count > 0)
             {
                 var selectedRow = dgvProjects.SelectedRows[0];
-                int projectId = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+                int projectId = Convert.ToInt32(selectedRow.Cells["ProdProjId"].Value);
                 _ = LoadItemsByProject(projectId);
             }
         }
@@ -118,8 +131,16 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
         private async void FormProductionManagement_Load(object sender, EventArgs e)
         {
+            dgvProjects.SelectionChanged += dgvProjects_SelectionChanged; // 🟢 חשוב!
+
             await LoadProjectsAsync();
 
+            // בחר את השורה הראשונה אם קיימת
+            if (dgvProjects.Rows.Count > 0)
+            {
+                dgvProjects.ClearSelection();
+                dgvProjects.Rows[0].Selected = true;
+            }
         }
 
 
@@ -152,6 +173,8 @@ namespace EngineeringManagementSystem.WinForms.Forms
                 _ = LoadProjectsAsync();
             }
         }
+
+
 
 
     }
