@@ -5,9 +5,10 @@
     public class QuestionRequest
     {
         public int AskedByUserId { get; set; }
-        public int ProductionProjectId { get; set; }
-        public int DocumentRevisionId { get; set; }
+        public int DocumentId { get; set; }
         public string QuestionText { get; set; }
+
+        public int AskByUser {  get; set; }
 
 
         

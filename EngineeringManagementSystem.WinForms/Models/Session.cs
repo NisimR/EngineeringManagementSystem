@@ -7,5 +7,8 @@ namespace EngineeringManagementSystem.WinForms.Models
         public static int UserId { get; set; }
         public static string FullName { get; set; }
         public static string Role { get; set; }
+
+        public static string DisplayText => $"Connected as: {FullName} ({Role})";
+
     }
 }

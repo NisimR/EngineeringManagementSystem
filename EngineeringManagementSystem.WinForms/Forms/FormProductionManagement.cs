@@ -64,7 +64,7 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync($"https://localhost:7251/api/ProductionItems/by-project/{projectId}");
+                var response = await client.GetAsync($"https://localhost:7251/api/ProductionItems/byProject/{projectId}");
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -72,11 +72,11 @@ namespace EngineeringManagementSystem.WinForms.Forms
 
                     dgvItems.DataSource = items.Select(i => new
                     {
-                        מזהה = i.Id,
-                        שם_חלק = i.ItemName,
+                        מזהה = i.ProductionItemId,
+                        שם_חלק = i.PartName,
                         כמות = i.Quantity,
-                        מסמך = i.DocumentNumber,
-                        פרויקט = i.ProjectNumber
+                        מסמך = i.DocumentId,
+                        פרויקט = i.ProductionProjectId
                     }).ToList();
                 }
                 else

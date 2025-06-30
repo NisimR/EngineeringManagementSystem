@@ -39,27 +39,30 @@
             // 
             // txtDocName
             // 
+            this.txtDocName.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.txtDocName.Location = new System.Drawing.Point(151, 177);
             this.txtDocName.Name = "txtDocName";
-            this.txtDocName.Size = new System.Drawing.Size(349, 38);
+            this.txtDocName.Size = new System.Drawing.Size(418, 43);
             this.txtDocName.TabIndex = 0;
             this.txtDocName.Text = "Doc Name";
             this.txtDocName.TextChanged += new System.EventHandler(this.txtDocName_TextChanged);
             // 
             // txtPathDoc
             // 
-            this.txtPathDoc.Location = new System.Drawing.Point(151, 301);
+            this.txtPathDoc.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtPathDoc.Location = new System.Drawing.Point(151, 308);
             this.txtPathDoc.Name = "txtPathDoc";
-            this.txtPathDoc.Size = new System.Drawing.Size(349, 38);
+            this.txtPathDoc.Size = new System.Drawing.Size(418, 43);
             this.txtPathDoc.TabIndex = 1;
             this.txtPathDoc.Text = "Path Doc";
             this.txtPathDoc.TextChanged += new System.EventHandler(this.txtPathDoc_TextChanged);
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Location = new System.Drawing.Point(560, 301);
+            this.btnBrowse.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnBrowse.Location = new System.Drawing.Point(623, 286);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(200, 38);
+            this.btnBrowse.Size = new System.Drawing.Size(300, 60);
             this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = true;
@@ -67,29 +70,32 @@
             // 
             // cmbReviewer
             // 
+            this.cmbReviewer.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.cmbReviewer.FormattingEnabled = true;
-            this.cmbReviewer.Location = new System.Drawing.Point(151, 366);
+            this.cmbReviewer.Location = new System.Drawing.Point(151, 382);
             this.cmbReviewer.Name = "cmbReviewer";
-            this.cmbReviewer.Size = new System.Drawing.Size(349, 39);
+            this.cmbReviewer.Size = new System.Drawing.Size(418, 45);
             this.cmbReviewer.TabIndex = 3;
             this.cmbReviewer.Text = "Reviewer";
             this.cmbReviewer.SelectedIndexChanged += new System.EventHandler(this.cmbReviewer_SelectedIndexChanged);
             // 
             // cmbApprover
             // 
+            this.cmbApprover.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.cmbApprover.FormattingEnabled = true;
-            this.cmbApprover.Location = new System.Drawing.Point(151, 445);
+            this.cmbApprover.Location = new System.Drawing.Point(151, 463);
             this.cmbApprover.Name = "cmbApprover";
-            this.cmbApprover.Size = new System.Drawing.Size(349, 39);
+            this.cmbApprover.Size = new System.Drawing.Size(418, 45);
             this.cmbApprover.TabIndex = 4;
             this.cmbApprover.Text = "Approver";
             this.cmbApprover.SelectedIndexChanged += new System.EventHandler(this.cmbApprover_SelectedIndexChanged);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(151, 555);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnSave.Location = new System.Drawing.Point(151, 571);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(212, 66);
+            this.btnSave.Size = new System.Drawing.Size(418, 60);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -98,9 +104,10 @@
             // lblRevision
             // 
             this.lblRevision.AutoSize = true;
-            this.lblRevision.Location = new System.Drawing.Point(554, 183);
+            this.lblRevision.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.lblRevision.Location = new System.Drawing.Point(615, 169);
             this.lblRevision.Name = "lblRevision";
-            this.lblRevision.Size = new System.Drawing.Size(72, 32);
+            this.lblRevision.Size = new System.Drawing.Size(83, 46);
             this.lblRevision.TabIndex = 6;
             this.lblRevision.Text = "REV";
             // 
@@ -117,7 +124,7 @@
             this.Controls.Add(this.txtPathDoc);
             this.Controls.Add(this.txtDocName);
             this.Name = "FormEditDocument";
-            this.Text = "FormEditDocument";
+            this.Text = "Edit Document";
             this.Load += new System.EventHandler(this.FormEditDocument_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

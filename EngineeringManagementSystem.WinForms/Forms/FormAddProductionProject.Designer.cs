@@ -41,60 +41,67 @@
             // lblProjectName
             // 
             this.lblProjectName.AutoSize = true;
-            this.lblProjectName.Location = new System.Drawing.Point(420, 131);
+            this.lblProjectName.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.lblProjectName.Location = new System.Drawing.Point(426, 131);
             this.lblProjectName.Name = "lblProjectName";
-            this.lblProjectName.Size = new System.Drawing.Size(185, 32);
+            this.lblProjectName.Size = new System.Drawing.Size(236, 46);
             this.lblProjectName.TabIndex = 0;
             this.lblProjectName.Text = "Project Name";
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(636, 131);
+            this.txtProjectName.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtProjectName.Location = new System.Drawing.Point(725, 131);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(253, 38);
+            this.txtProjectName.Size = new System.Drawing.Size(345, 43);
             this.txtProjectName.TabIndex = 1;
             this.txtProjectName.Text = "Project Name";
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(420, 230);
+            this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.lblDescription.Location = new System.Drawing.Point(426, 227);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(157, 32);
+            this.lblDescription.Size = new System.Drawing.Size(204, 46);
             this.lblDescription.TabIndex = 2;
             this.lblDescription.Text = "Description";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(636, 227);
+            this.txtDescription.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtDescription.Location = new System.Drawing.Point(725, 230);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(253, 38);
+            this.txtDescription.Size = new System.Drawing.Size(345, 43);
             this.txtDescription.TabIndex = 3;
             this.txtDescription.Text = "Description";
             // 
             // lblManager
             // 
             this.lblManager.AutoSize = true;
-            this.lblManager.Location = new System.Drawing.Point(426, 336);
+            this.lblManager.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.lblManager.Location = new System.Drawing.Point(426, 327);
             this.lblManager.Name = "lblManager";
-            this.lblManager.Size = new System.Drawing.Size(126, 32);
+            this.lblManager.Size = new System.Drawing.Size(163, 46);
             this.lblManager.TabIndex = 4;
             this.lblManager.Text = "Manager";
             // 
             // cboManagers
             // 
+            this.cboManagers.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.cboManagers.FormattingEnabled = true;
-            this.cboManagers.Location = new System.Drawing.Point(636, 329);
+            this.cboManagers.Location = new System.Drawing.Point(725, 327);
             this.cboManagers.Name = "cboManagers";
-            this.cboManagers.Size = new System.Drawing.Size(253, 39);
+            this.cboManagers.Size = new System.Drawing.Size(345, 45);
             this.cboManagers.TabIndex = 5;
             this.cboManagers.Text = "Managers";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(432, 464);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnSave.Location = new System.Drawing.Point(434, 464);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(173, 64);
+            this.btnSave.Size = new System.Drawing.Size(300, 60);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -102,9 +109,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(699, 464);
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnCancel.Location = new System.Drawing.Point(770, 464);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(169, 64);
+            this.btnCancel.Size = new System.Drawing.Size(300, 60);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -124,7 +132,7 @@
             this.Controls.Add(this.txtProjectName);
             this.Controls.Add(this.lblProjectName);
             this.Name = "FormAddProductionProject";
-            this.Text = "FormAddProductionProject";
+            this.Text = "Add Production Project";
             this.Load += new System.EventHandler(this.FormAddProductionProject_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

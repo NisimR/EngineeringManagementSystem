@@ -36,9 +36,10 @@
             // 
             // btnUsers
             // 
-            this.btnUsers.Location = new System.Drawing.Point(299, 299);
+            this.btnUsers.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnUsers.Location = new System.Drawing.Point(113, 335);
             this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(412, 270);
+            this.btnUsers.Size = new System.Drawing.Size(500, 500);
             this.btnUsers.TabIndex = 0;
             this.btnUsers.Text = "User Managment";
             this.btnUsers.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // btnEngineering
             // 
-            this.btnEngineering.Location = new System.Drawing.Point(747, 299);
+            this.btnEngineering.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnEngineering.Location = new System.Drawing.Point(665, 335);
             this.btnEngineering.Name = "btnEngineering";
-            this.btnEngineering.Size = new System.Drawing.Size(406, 278);
+            this.btnEngineering.Size = new System.Drawing.Size(500, 500);
             this.btnEngineering.TabIndex = 1;
             this.btnEngineering.Text = "Engineering Managment";
             this.btnEngineering.UseVisualStyleBackColor = true;
@@ -56,9 +58,10 @@
             // 
             // btnProduction
             // 
-            this.btnProduction.Location = new System.Drawing.Point(1216, 299);
+            this.btnProduction.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnProduction.Location = new System.Drawing.Point(1236, 335);
             this.btnProduction.Name = "btnProduction";
-            this.btnProduction.Size = new System.Drawing.Size(382, 278);
+            this.btnProduction.Size = new System.Drawing.Size(500, 500);
             this.btnProduction.TabIndex = 2;
             this.btnProduction.Text = "Production Managment";
             this.btnProduction.UseVisualStyleBackColor = true;
@@ -66,7 +69,8 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(299, 773);
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnBack.Location = new System.Drawing.Point(113, 72);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(210, 98);
             this.btnBack.TabIndex = 3;
@@ -78,13 +82,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1806, 984);
+            this.ClientSize = new System.Drawing.Size(1837, 1024);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnProduction);
             this.Controls.Add(this.btnEngineering);
             this.Controls.Add(this.btnUsers);
             this.Name = "FormManagement";
-            this.Text = "FormManagement";
+            this.Text = "Management";
             this.Load += new System.EventHandler(this.FormManagement_Load);
             this.ResumeLayout(false);
 

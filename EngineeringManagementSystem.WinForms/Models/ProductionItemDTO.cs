@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace EngineeringManagementSystem.WinForms.Models
 {
-    internal class ProductionItemDTO
+    public class ProductionItemDTO
     {
-        public int Id { get; set; }
-        public string ItemName { get; set; }
+        public int ProductionItemId { get; set; }
+        public int DocumentId { get; set; }
+        public string PartName { get; set; }
+
+        public int ProductionProjectId { get; set; }
+        public string ProductionProjectName { get; set; } // 🟢 חדש
+
         public int Quantity { get; set; }
-        public int ProjectNumber { get; set; }
-        public int DocumentNumber { get; set; }
+        public int CreatedById { get; set; }
+        public string CreatedByName { get; set; } // 🟢 חדש
+
+        public DateTime CreatedAt { get; set; }
     }
 }

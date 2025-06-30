@@ -36,7 +36,8 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(147, 255);
+            this.btnCreate.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnCreate.Location = new System.Drawing.Point(147, 314);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(483, 86);
             this.btnCreate.TabIndex = 0;
@@ -46,36 +47,39 @@
             // 
             // txtOldName
             // 
-            this.txtOldName.Location = new System.Drawing.Point(147, 62);
+            this.txtOldName.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtOldName.Location = new System.Drawing.Point(147, 63);
             this.txtOldName.Name = "txtOldName";
-            this.txtOldName.Size = new System.Drawing.Size(262, 38);
+            this.txtOldName.Size = new System.Drawing.Size(483, 43);
             this.txtOldName.TabIndex = 1;
             // 
             // txtOldRev
             // 
-            this.txtOldRev.Location = new System.Drawing.Point(147, 128);
+            this.txtOldRev.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtOldRev.Location = new System.Drawing.Point(147, 145);
             this.txtOldRev.Name = "txtOldRev";
-            this.txtOldRev.Size = new System.Drawing.Size(262, 38);
+            this.txtOldRev.Size = new System.Drawing.Size(483, 43);
             this.txtOldRev.TabIndex = 2;
             // 
             // txtNewRev
             // 
-            this.txtNewRev.Location = new System.Drawing.Point(147, 189);
+            this.txtNewRev.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtNewRev.Location = new System.Drawing.Point(147, 232);
             this.txtNewRev.Name = "txtNewRev";
-            this.txtNewRev.Size = new System.Drawing.Size(262, 38);
+            this.txtNewRev.Size = new System.Drawing.Size(483, 43);
             this.txtNewRev.TabIndex = 3;
             // 
             // FormCreateNewRevision
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1184, 861);
             this.Controls.Add(this.txtNewRev);
             this.Controls.Add(this.txtOldRev);
             this.Controls.Add(this.txtOldName);
             this.Controls.Add(this.btnCreate);
             this.Name = "FormCreateNewRevision";
-            this.Text = "FormCreateNewRevision";
+            this.Text = " Create New Revision";
             this.Load += new System.EventHandler(this.FormCreateNewRevision_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

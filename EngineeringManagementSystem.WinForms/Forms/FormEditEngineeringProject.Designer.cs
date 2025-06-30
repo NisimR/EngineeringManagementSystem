@@ -37,25 +37,28 @@
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(512, 97);
+            this.txtProjectName.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtProjectName.Location = new System.Drawing.Point(196, 94);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(341, 38);
+            this.txtProjectName.Size = new System.Drawing.Size(641, 43);
             this.txtProjectName.TabIndex = 0;
             this.txtProjectName.Text = "Project Name";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(512, 161);
+            this.txtDescription.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtDescription.Location = new System.Drawing.Point(196, 181);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(345, 38);
+            this.txtDescription.Size = new System.Drawing.Size(641, 43);
             this.txtDescription.TabIndex = 1;
             this.txtDescription.Text = "Description";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(512, 312);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnSave.Location = new System.Drawing.Point(196, 394);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 66);
+            this.btnSave.Size = new System.Drawing.Size(300, 60);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -63,9 +66,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(668, 312);
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnCancel.Location = new System.Drawing.Point(537, 394);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(126, 66);
+            this.btnCancel.Size = new System.Drawing.Size(300, 60);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -73,10 +77,11 @@
             // 
             // cmbProjectManager
             // 
+            this.cmbProjectManager.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.cmbProjectManager.FormattingEnabled = true;
-            this.cmbProjectManager.Location = new System.Drawing.Point(512, 225);
+            this.cmbProjectManager.Location = new System.Drawing.Point(196, 271);
             this.cmbProjectManager.Name = "cmbProjectManager";
-            this.cmbProjectManager.Size = new System.Drawing.Size(341, 39);
+            this.cmbProjectManager.Size = new System.Drawing.Size(641, 45);
             this.cmbProjectManager.TabIndex = 4;
             this.cmbProjectManager.Text = "Project Manager";
             // 
@@ -91,7 +96,7 @@
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtProjectName);
             this.Name = "FormEditEngineeringProject";
-            this.Text = "FormEditEngineeringProject";
+            this.Text = "Edit Engineering Project";
             this.Load += new System.EventHandler(this.FormEditEngineeringProject_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

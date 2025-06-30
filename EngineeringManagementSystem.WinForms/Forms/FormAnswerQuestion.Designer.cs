@@ -36,25 +36,28 @@
             // lblQuestion
             // 
             this.lblQuestion.AutoSize = true;
+            this.lblQuestion.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.lblQuestion.Location = new System.Drawing.Point(77, 79);
             this.lblQuestion.Name = "lblQuestion";
-            this.lblQuestion.Size = new System.Drawing.Size(137, 32);
+            this.lblQuestion.Size = new System.Drawing.Size(174, 46);
             this.lblQuestion.TabIndex = 0;
             this.lblQuestion.Text = "Question:";
             // 
             // txtAnswer
             // 
+            this.txtAnswer.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.txtAnswer.Location = new System.Drawing.Point(83, 180);
             this.txtAnswer.Name = "txtAnswer";
-            this.txtAnswer.Size = new System.Drawing.Size(702, 38);
+            this.txtAnswer.Size = new System.Drawing.Size(702, 43);
             this.txtAnswer.TabIndex = 1;
             this.txtAnswer.Text = "Insert Answer";
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.btnSubmit.Location = new System.Drawing.Point(83, 267);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(231, 70);
+            this.btnSubmit.Size = new System.Drawing.Size(702, 70);
             this.btnSubmit.TabIndex = 2;
             this.btnSubmit.Text = "Sumbit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -64,12 +67,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 573);
+            this.ClientSize = new System.Drawing.Size(1167, 773);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtAnswer);
             this.Controls.Add(this.lblQuestion);
             this.Name = "FormAnswerQuestion";
-            this.Text = "FormAnswerQuestion";
+            this.Text = "Answer Question";
             this.Load += new System.EventHandler(this.FormAnswerQuestion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

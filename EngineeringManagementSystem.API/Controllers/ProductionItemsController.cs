@@ -42,24 +42,29 @@ public class ProductionItemsController : ControllerBase
         return Ok(new { item });
     }
 
-    // 🔍 שליפת כל פריטי הייצור לפי פרויקט
-    [HttpGet("by-project/{projectId}")]
-    public async Task<ActionResult<IEnumerable<ProductionItemDTO>>> GetByProject(int projectId)
+    [HttpGet("byProject/{prodProjId}")]
+    public async Task<ActionResult<IEnumerable<ProductionItemDTO>>> GetByProject(int prodProjId)
     {
         var items = await _context.ProductionItems
-            .Where(i => i.ProductionProjectId == projectId)
-            .Select(i => new ProductionItemDTO
-            {
-                Id = i.ProductionItemId,
-                ItemName = i.PartName,
-                Quantity = i.Quantity,
-                ProjectNumber = i.ProductionProjectId,
-                DocumentNumber = i.DocumentId
-            }).ToListAsync();
+            .Where(p => p.ProductionProjectId == prodProjId)
+            .ToListAsync();
 
-        return Ok(items);
+        var result = items.Select(p => new ProductionItemDTO
+        {
+            ProductionItemId = p.ProductionItemId,
+            DocumentId = p.DocumentId,
+            DocumentName = _context.Documents.FirstOrDefault(d => d.DocumentId == p.DocumentId)?.DocName,
+            PartName = p.PartName,
+            ProductionProjectId = p.ProductionProjectId,
+            ProductionProjectName = _context.ProductionProjects.FirstOrDefault(pp => pp.ProdProjId == p.ProductionProjectId)?.ProjectName,
+            Quantity = p.Quantity,
+            CreatedById = p.CreatedById,
+            CreatedByName = _context.Users.FirstOrDefault(u => u.UserId == p.CreatedById)?.FullName,
+            CreatedAt = p.CreatedAt
+        });
+
+        return Ok(result);
     }
-
     // 🔍 שליפת פריט ייצור לפי ID
     [HttpGet("{id}")]
     public async Task<ActionResult<ProductionItemDTO>> GetById(int id)
@@ -71,13 +76,20 @@ public class ProductionItemsController : ControllerBase
 
         return Ok(new ProductionItemDTO
         {
-            Id = item.ProductionItemId,
-            ItemName = item.PartName,
+            ProductionItemId = item.ProductionItemId,
+            DocumentId = item.DocumentId,
+            DocumentName = _context.Documents.FirstOrDefault(d => d.DocumentId == item.DocumentId)?.DocName,
+            PartName = item.PartName,
+            ProductionProjectId = item.ProductionProjectId,
+            ProductionProjectName = _context.ProductionProjects.FirstOrDefault(pp => pp.ProdProjId == item.ProductionProjectId)?.ProjectName,
             Quantity = item.Quantity,
-            ProjectNumber = item.ProductionProjectId,
-            DocumentNumber = item.DocumentId
+            CreatedById = item.CreatedById,
+            CreatedByName = _context.Users.FirstOrDefault(u => u.UserId == item.CreatedById)?.FullName,
+            CreatedAt = item.CreatedAt
         });
     }
+
+
 
     // 📝 אופציונלי: עדכון פריט ייצור
     [HttpPut("{id}")]

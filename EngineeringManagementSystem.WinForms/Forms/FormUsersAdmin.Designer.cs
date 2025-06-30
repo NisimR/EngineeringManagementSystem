@@ -39,18 +39,19 @@
             // dataGridUsers
             // 
             this.dataGridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridUsers.Location = new System.Drawing.Point(289, 221);
+            this.dataGridUsers.Location = new System.Drawing.Point(158, 186);
             this.dataGridUsers.Name = "dataGridUsers";
             this.dataGridUsers.RowHeadersWidth = 102;
             this.dataGridUsers.RowTemplate.Height = 40;
-            this.dataGridUsers.Size = new System.Drawing.Size(2249, 363);
+            this.dataGridUsers.Size = new System.Drawing.Size(2486, 908);
             this.dataGridUsers.TabIndex = 0;
             // 
             // btnAddUser
             // 
-            this.btnAddUser.Location = new System.Drawing.Point(289, 636);
+            this.btnAddUser.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnAddUser.Location = new System.Drawing.Point(158, 1163);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(750, 87);
+            this.btnAddUser.Size = new System.Drawing.Size(300, 60);
             this.btnAddUser.TabIndex = 1;
             this.btnAddUser.Text = "Add User";
             this.btnAddUser.UseVisualStyleBackColor = true;
@@ -58,9 +59,10 @@
             // 
             // btnEditUser
             // 
-            this.btnEditUser.Location = new System.Drawing.Point(1100, 636);
+            this.btnEditUser.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnEditUser.Location = new System.Drawing.Point(508, 1163);
             this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(652, 87);
+            this.btnEditUser.Size = new System.Drawing.Size(300, 60);
             this.btnEditUser.TabIndex = 2;
             this.btnEditUser.Text = "Edit User";
             this.btnEditUser.UseVisualStyleBackColor = true;
@@ -68,9 +70,10 @@
             // 
             // btnDeleteUser
             // 
-            this.btnDeleteUser.Location = new System.Drawing.Point(1833, 636);
+            this.btnDeleteUser.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnDeleteUser.Location = new System.Drawing.Point(842, 1163);
             this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(705, 87);
+            this.btnDeleteUser.Size = new System.Drawing.Size(300, 60);
             this.btnDeleteUser.TabIndex = 3;
             this.btnDeleteUser.Text = "Delete User";
             this.btnDeleteUser.UseVisualStyleBackColor = true;
@@ -78,9 +81,10 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(302, 1115);
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnBack.Location = new System.Drawing.Point(158, 50);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(234, 106);
+            this.btnBack.Size = new System.Drawing.Size(300, 60);
             this.btnBack.TabIndex = 4;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -97,7 +101,7 @@
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.dataGridUsers);
             this.Name = "FormUsersAdmin";
-            this.Text = "FormUsersAdmin";
+            this.Text = "Users Admin";
             this.Load += new System.EventHandler(this.FormUsersAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).EndInit();
             this.ResumeLayout(false);

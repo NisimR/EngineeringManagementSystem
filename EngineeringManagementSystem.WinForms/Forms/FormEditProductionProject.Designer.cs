@@ -37,34 +37,38 @@
             // 
             // cboManagers
             // 
+            this.cboManagers.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.cboManagers.FormattingEnabled = true;
-            this.cboManagers.Location = new System.Drawing.Point(329, 223);
+            this.cboManagers.Location = new System.Drawing.Point(146, 237);
             this.cboManagers.Name = "cboManagers";
-            this.cboManagers.Size = new System.Drawing.Size(330, 39);
+            this.cboManagers.Size = new System.Drawing.Size(636, 45);
             this.cboManagers.TabIndex = 0;
             this.cboManagers.Text = "Managers";
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(329, 89);
+            this.txtProjectName.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtProjectName.Location = new System.Drawing.Point(146, 79);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(330, 38);
+            this.txtProjectName.Size = new System.Drawing.Size(636, 43);
             this.txtProjectName.TabIndex = 1;
             this.txtProjectName.Text = "ProjectName";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(329, 150);
+            this.txtDescription.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtDescription.Location = new System.Drawing.Point(146, 158);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(330, 38);
+            this.txtDescription.Size = new System.Drawing.Size(636, 43);
             this.txtDescription.TabIndex = 2;
             this.txtDescription.Text = "Description";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(329, 300);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnSave.Location = new System.Drawing.Point(146, 335);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(160, 60);
+            this.btnSave.Size = new System.Drawing.Size(300, 60);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -72,9 +76,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(524, 300);
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnCancel.Location = new System.Drawing.Point(482, 335);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(135, 60);
+            this.btnCancel.Size = new System.Drawing.Size(300, 60);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -84,14 +89,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 679);
+            this.ClientSize = new System.Drawing.Size(917, 605);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtProjectName);
             this.Controls.Add(this.cboManagers);
             this.Name = "FormEditProductionProject";
-            this.Text = "FormEditProductionProject";
+            this.Text = "Edit Production Project";
             this.Load += new System.EventHandler(this.FormEditProductionProject_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

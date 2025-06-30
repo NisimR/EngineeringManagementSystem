@@ -37,25 +37,28 @@
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(399, 169);
+            this.txtProjectName.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtProjectName.Location = new System.Drawing.Point(338, 177);
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Size = new System.Drawing.Size(346, 38);
+            this.txtProjectName.Size = new System.Drawing.Size(628, 43);
             this.txtProjectName.TabIndex = 0;
             this.txtProjectName.Text = "Project Name";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(399, 234);
+            this.txtDescription.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtDescription.Location = new System.Drawing.Point(338, 234);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(346, 38);
+            this.txtDescription.Size = new System.Drawing.Size(628, 43);
             this.txtDescription.TabIndex = 1;
             this.txtDescription.Text = "Description";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(399, 369);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnSave.Location = new System.Drawing.Point(338, 371);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(164, 62);
+            this.btnSave.Size = new System.Drawing.Size(300, 60);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -63,9 +66,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(592, 369);
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnCancel.Location = new System.Drawing.Point(666, 369);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(153, 62);
+            this.btnCancel.Size = new System.Drawing.Size(300, 60);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -73,10 +77,11 @@
             // 
             // cmbProjectManager
             // 
+            this.cmbProjectManager.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.cmbProjectManager.FormattingEnabled = true;
-            this.cmbProjectManager.Location = new System.Drawing.Point(399, 294);
+            this.cmbProjectManager.Location = new System.Drawing.Point(338, 294);
             this.cmbProjectManager.Name = "cmbProjectManager";
-            this.cmbProjectManager.Size = new System.Drawing.Size(346, 39);
+            this.cmbProjectManager.Size = new System.Drawing.Size(628, 45);
             this.cmbProjectManager.TabIndex = 4;
             this.cmbProjectManager.Text = "Project Manager";
             this.cmbProjectManager.SelectedIndexChanged += new System.EventHandler(this.cmbProjectManager_SelectedIndexChanged);
@@ -85,14 +90,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1363, 696);
+            this.ClientSize = new System.Drawing.Size(1257, 676);
             this.Controls.Add(this.cmbProjectManager);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtProjectName);
             this.Name = "FormAddEngineeringProject";
-            this.Text = "FormAddEngineeringProject";
+            this.Text = "Add Engineering Project";
             this.Load += new System.EventHandler(this.FormAddEngineeringProject_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

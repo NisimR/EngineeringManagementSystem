@@ -53,7 +53,8 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(105, 57);
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnBack.Location = new System.Drawing.Point(107, 71);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(138, 60);
             this.btnBack.TabIndex = 0;
@@ -63,10 +64,11 @@
             // 
             // cmbProjects
             // 
+            this.cmbProjects.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.cmbProjects.FormattingEnabled = true;
-            this.cmbProjects.Location = new System.Drawing.Point(105, 218);
+            this.cmbProjects.Location = new System.Drawing.Point(107, 244);
             this.cmbProjects.Name = "cmbProjects";
-            this.cmbProjects.Size = new System.Drawing.Size(310, 39);
+            this.cmbProjects.Size = new System.Drawing.Size(310, 45);
             this.cmbProjects.TabIndex = 1;
             this.cmbProjects.Text = "Project List";
             this.cmbProjects.SelectedIndexChanged += new System.EventHandler(this.cmbProjects_SelectedIndexChanged);
@@ -74,19 +76,20 @@
             // dataGridDocuments
             // 
             this.dataGridDocuments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDocuments.Location = new System.Drawing.Point(453, 218);
+            this.dataGridDocuments.Location = new System.Drawing.Point(491, 244);
             this.dataGridDocuments.Name = "dataGridDocuments";
             this.dataGridDocuments.RowHeadersWidth = 102;
             this.dataGridDocuments.RowTemplate.Height = 40;
-            this.dataGridDocuments.Size = new System.Drawing.Size(3027, 522);
+            this.dataGridDocuments.Size = new System.Drawing.Size(2989, 496);
             this.dataGridDocuments.TabIndex = 2;
             this.dataGridDocuments.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnOpenDoc
             // 
-            this.btnOpenDoc.Location = new System.Drawing.Point(453, 773);
+            this.btnOpenDoc.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnOpenDoc.Location = new System.Drawing.Point(1978, 773);
             this.btnOpenDoc.Name = "btnOpenDoc";
-            this.btnOpenDoc.Size = new System.Drawing.Size(424, 60);
+            this.btnOpenDoc.Size = new System.Drawing.Size(300, 60);
             this.btnOpenDoc.TabIndex = 3;
             this.btnOpenDoc.Text = "Open Doc";
             this.btnOpenDoc.UseVisualStyleBackColor = true;
@@ -94,9 +97,10 @@
             // 
             // btnEditDoc
             // 
-            this.btnEditDoc.Location = new System.Drawing.Point(929, 773);
+            this.btnEditDoc.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnEditDoc.Location = new System.Drawing.Point(855, 773);
             this.btnEditDoc.Name = "btnEditDoc";
-            this.btnEditDoc.Size = new System.Drawing.Size(390, 60);
+            this.btnEditDoc.Size = new System.Drawing.Size(300, 60);
             this.btnEditDoc.TabIndex = 4;
             this.btnEditDoc.Text = "Edit Doc";
             this.btnEditDoc.UseVisualStyleBackColor = true;
@@ -104,9 +108,10 @@
             // 
             // btnDeleteDoc
             // 
-            this.btnDeleteDoc.Location = new System.Drawing.Point(1358, 773);
+            this.btnDeleteDoc.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnDeleteDoc.Location = new System.Drawing.Point(1227, 773);
             this.btnDeleteDoc.Name = "btnDeleteDoc";
-            this.btnDeleteDoc.Size = new System.Drawing.Size(360, 60);
+            this.btnDeleteDoc.Size = new System.Drawing.Size(300, 60);
             this.btnDeleteDoc.TabIndex = 5;
             this.btnDeleteDoc.Text = "Delete Doc";
             this.btnDeleteDoc.UseVisualStyleBackColor = true;
@@ -114,9 +119,10 @@
             // 
             // btnReleaseDoc
             // 
-            this.btnReleaseDoc.Location = new System.Drawing.Point(1755, 773);
+            this.btnReleaseDoc.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnReleaseDoc.Location = new System.Drawing.Point(1597, 773);
             this.btnReleaseDoc.Name = "btnReleaseDoc";
-            this.btnReleaseDoc.Size = new System.Drawing.Size(382, 60);
+            this.btnReleaseDoc.Size = new System.Drawing.Size(300, 60);
             this.btnReleaseDoc.TabIndex = 6;
             this.btnReleaseDoc.Text = "Release Doc";
             this.btnReleaseDoc.UseVisualStyleBackColor = true;
@@ -124,9 +130,10 @@
             // 
             // btnAddDoc
             // 
-            this.btnAddDoc.Location = new System.Drawing.Point(2404, 783);
+            this.btnAddDoc.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnAddDoc.Location = new System.Drawing.Point(491, 773);
             this.btnAddDoc.Name = "btnAddDoc";
-            this.btnAddDoc.Size = new System.Drawing.Size(487, 60);
+            this.btnAddDoc.Size = new System.Drawing.Size(300, 60);
             this.btnAddDoc.TabIndex = 7;
             this.btnAddDoc.Text = "Add Doc";
             this.btnAddDoc.UseVisualStyleBackColor = true;
@@ -135,18 +142,20 @@
             // lblEngProj
             // 
             this.lblEngProj.AutoSize = true;
-            this.lblEngProj.Location = new System.Drawing.Point(99, 166);
+            this.lblEngProj.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.lblEngProj.Location = new System.Drawing.Point(99, 160);
             this.lblEngProj.Name = "lblEngProj";
-            this.lblEngProj.Size = new System.Drawing.Size(286, 32);
+            this.lblEngProj.Size = new System.Drawing.Size(359, 46);
             this.lblEngProj.TabIndex = 8;
             this.lblEngProj.Text = "Engineering Projects:";
             // 
             // lblQuestions
             // 
             this.lblQuestions.AutoSize = true;
-            this.lblQuestions.Location = new System.Drawing.Point(447, 899);
+            this.lblQuestions.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.lblQuestions.Location = new System.Drawing.Point(483, 870);
             this.lblQuestions.Name = "lblQuestions";
-            this.lblQuestions.Size = new System.Drawing.Size(151, 32);
+            this.lblQuestions.Size = new System.Drawing.Size(189, 46);
             this.lblQuestions.TabIndex = 9;
             this.lblQuestions.Text = "Questions:";
             this.lblQuestions.Click += new System.EventHandler(this.label1_Click);
@@ -154,19 +163,20 @@
             // dataGridQuestions
             // 
             this.dataGridQuestions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridQuestions.Location = new System.Drawing.Point(453, 950);
+            this.dataGridQuestions.Location = new System.Drawing.Point(491, 950);
             this.dataGridQuestions.Name = "dataGridQuestions";
             this.dataGridQuestions.ReadOnly = true;
             this.dataGridQuestions.RowHeadersWidth = 102;
-            this.dataGridQuestions.Size = new System.Drawing.Size(1492, 294);
+            this.dataGridQuestions.Size = new System.Drawing.Size(1454, 294);
             this.dataGridQuestions.TabIndex = 10;
             this.dataGridQuestions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridQuestions_CellContentClick);
             // 
             // btnAnswerQuestion
             // 
-            this.btnAnswerQuestion.Location = new System.Drawing.Point(453, 1268);
+            this.btnAnswerQuestion.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnAnswerQuestion.Location = new System.Drawing.Point(491, 1273);
             this.btnAnswerQuestion.Name = "btnAnswerQuestion";
-            this.btnAnswerQuestion.Size = new System.Drawing.Size(1492, 73);
+            this.btnAnswerQuestion.Size = new System.Drawing.Size(1454, 60);
             this.btnAnswerQuestion.TabIndex = 11;
             this.btnAnswerQuestion.Text = "Answer";
             this.btnAnswerQuestion.UseVisualStyleBackColor = true;
@@ -174,9 +184,10 @@
             // 
             // btnNewRevision
             // 
-            this.btnNewRevision.Location = new System.Drawing.Point(2957, 783);
+            this.btnNewRevision.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnNewRevision.Location = new System.Drawing.Point(2367, 773);
             this.btnNewRevision.Name = "btnNewRevision";
-            this.btnNewRevision.Size = new System.Drawing.Size(523, 60);
+            this.btnNewRevision.Size = new System.Drawing.Size(300, 60);
             this.btnNewRevision.TabIndex = 12;
             this.btnNewRevision.Text = "New Revision";
             this.btnNewRevision.UseVisualStyleBackColor = true;
@@ -195,9 +206,10 @@
             // 
             // btnApprove
             // 
-            this.btnApprove.Location = new System.Drawing.Point(2000, 1268);
+            this.btnApprove.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnApprove.Location = new System.Drawing.Point(2000, 1273);
             this.btnApprove.Name = "btnApprove";
-            this.btnApprove.Size = new System.Drawing.Size(439, 73);
+            this.btnApprove.Size = new System.Drawing.Size(300, 60);
             this.btnApprove.TabIndex = 14;
             this.btnApprove.Text = "Approve";
             this.btnApprove.UseVisualStyleBackColor = true;
@@ -205,9 +217,10 @@
             // 
             // btnReject
             // 
-            this.btnReject.Location = new System.Drawing.Point(2475, 1273);
+            this.btnReject.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnReject.Location = new System.Drawing.Point(2333, 1273);
             this.btnReject.Name = "btnReject";
-            this.btnReject.Size = new System.Drawing.Size(533, 73);
+            this.btnReject.Size = new System.Drawing.Size(300, 60);
             this.btnReject.TabIndex = 15;
             this.btnReject.Text = "Reject";
             this.btnReject.UseVisualStyleBackColor = true;
@@ -215,9 +228,10 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(3058, 1273);
+            this.btnOpen.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnOpen.Location = new System.Drawing.Point(2674, 1273);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(422, 73);
+            this.btnOpen.Size = new System.Drawing.Size(300, 60);
             this.btnOpen.TabIndex = 16;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -226,9 +240,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1994, 899);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.label1.Location = new System.Drawing.Point(1992, 870);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(445, 32);
+            this.label1.Size = new System.Drawing.Size(577, 46);
             this.label1.TabIndex = 17;
             this.label1.Text = "Documents Awaiting My Approval:\n";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
@@ -257,7 +272,7 @@
             this.Controls.Add(this.cmbProjects);
             this.Controls.Add(this.btnBack);
             this.Name = "FormEngineering";
-            this.Text = "FormEngineering";
+            this.Text = "Engineering";
             this.Load += new System.EventHandler(this.FormEngineering_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDocuments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridQuestions)).EndInit();

@@ -49,24 +49,27 @@
             // 
             // txtPartName
             // 
-            this.txtPartName.Location = new System.Drawing.Point(332, 414);
+            this.txtPartName.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.txtPartName.Location = new System.Drawing.Point(332, 413);
             this.txtPartName.Name = "txtPartName";
-            this.txtPartName.Size = new System.Drawing.Size(166, 38);
+            this.txtPartName.Size = new System.Drawing.Size(354, 43);
             this.txtPartName.TabIndex = 1;
             this.txtPartName.Text = "Part Name";
             // 
             // numQuantity
             // 
-            this.numQuantity.Location = new System.Drawing.Point(332, 476);
+            this.numQuantity.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.numQuantity.Location = new System.Drawing.Point(714, 413);
             this.numQuantity.Name = "numQuantity";
-            this.numQuantity.Size = new System.Drawing.Size(120, 38);
+            this.numQuantity.Size = new System.Drawing.Size(274, 43);
             this.numQuantity.TabIndex = 2;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(332, 547);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnSave.Location = new System.Drawing.Point(332, 501);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(156, 54);
+            this.btnSave.Size = new System.Drawing.Size(300, 60);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -74,9 +77,10 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(531, 547);
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnCancel.Location = new System.Drawing.Point(688, 501);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(155, 54);
+            this.btnCancel.Size = new System.Drawing.Size(300, 60);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -85,14 +89,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1194, 765);
+            this.ClientSize = new System.Drawing.Size(1608, 860);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.numQuantity);
             this.Controls.Add(this.txtPartName);
             this.Controls.Add(this.dataGridDocuments);
             this.Name = "FormProductionItem";
-            this.Text = "FormProductionItem";
+            this.Text = "Production Item";
             this.Load += new System.EventHandler(this.FormProductionItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDocuments)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();
