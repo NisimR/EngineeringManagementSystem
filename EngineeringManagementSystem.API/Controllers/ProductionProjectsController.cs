@@ -89,5 +89,29 @@ public class ProductionProjectsController : ControllerBase
         return Ok(project);
     }
 
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteProject(int id)
+    {
+        var project = await _context.ProductionProjects
+            .FirstOrDefaultAsync(p => p.ProdProjId == id);
+
+        if (project == null)
+            return NotFound();
+
+        // שליפת פריטי ייצור הקשורים
+        var relatedItems = await _context.ProductionItems
+            .Where(pi => pi.ProductionProjectId == id)
+            .ToListAsync();
+
+        _context.ProductionItems.RemoveRange(relatedItems);
+        _context.ProductionProjects.Remove(project);
+
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+
+
 
 }

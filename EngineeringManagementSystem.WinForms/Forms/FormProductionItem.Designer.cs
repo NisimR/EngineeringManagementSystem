@@ -40,17 +40,17 @@
             // dataGridDocuments
             // 
             this.dataGridDocuments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDocuments.Location = new System.Drawing.Point(332, 180);
+            this.dataGridDocuments.Location = new System.Drawing.Point(332, 37);
             this.dataGridDocuments.Name = "dataGridDocuments";
             this.dataGridDocuments.RowHeadersWidth = 102;
             this.dataGridDocuments.RowTemplate.Height = 40;
-            this.dataGridDocuments.Size = new System.Drawing.Size(656, 187);
+            this.dataGridDocuments.Size = new System.Drawing.Size(1404, 516);
             this.dataGridDocuments.TabIndex = 0;
             // 
             // txtPartName
             // 
             this.txtPartName.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.txtPartName.Location = new System.Drawing.Point(332, 413);
+            this.txtPartName.Location = new System.Drawing.Point(328, 603);
             this.txtPartName.Name = "txtPartName";
             this.txtPartName.Size = new System.Drawing.Size(354, 43);
             this.txtPartName.TabIndex = 1;
@@ -59,7 +59,7 @@
             // numQuantity
             // 
             this.numQuantity.Font = new System.Drawing.Font("Segoe UI Semibold", 8.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.numQuantity.Location = new System.Drawing.Point(714, 413);
+            this.numQuantity.Location = new System.Drawing.Point(710, 603);
             this.numQuantity.Name = "numQuantity";
             this.numQuantity.Size = new System.Drawing.Size(274, 43);
             this.numQuantity.TabIndex = 2;
@@ -67,7 +67,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.btnSave.Location = new System.Drawing.Point(332, 501);
+            this.btnSave.Location = new System.Drawing.Point(328, 691);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(300, 60);
             this.btnSave.TabIndex = 3;
@@ -78,7 +78,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.btnCancel.Location = new System.Drawing.Point(688, 501);
+            this.btnCancel.Location = new System.Drawing.Point(684, 691);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(300, 60);
             this.btnCancel.TabIndex = 4;
@@ -89,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1608, 860);
+            this.ClientSize = new System.Drawing.Size(1944, 860);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.numQuantity);

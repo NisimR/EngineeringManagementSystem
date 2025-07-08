@@ -19,6 +19,8 @@ namespace EngineeringManagementSystem.WinForms.Forms
 {
     public partial class FormProduction : Form
     {
+        private List<AnswerDTO> allAnswers = new List<AnswerDTO>();
+
         public FormProduction()
         {
             InitializeComponent();
@@ -63,12 +65,24 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
             using (var client = new HttpClient())
             {
-                var questions = await client.GetFromJsonAsync<List<QuestionDTO>>($"https://localhost:7251/api/Questions/byProject/{projectId}");
-                dgvQuestions.DataSource = questions;
+                var questions = await client.GetFromJsonAsync<List<QuestionDTO>>(
+                    $"https://localhost:7251/api/Questions/byProject/{projectId}");
 
-                
+                allAnswers = await client.GetFromJsonAsync<List<AnswerDTO>>(
+                    $"https://localhost:7251/api/Answers");
+
+                foreach (var q in questions)
+                {
+                    var answer = allAnswers.FirstOrDefault(a => a.QuestionId == q.QuestionId);
+                    q.AnswerText = answer?.AnswerText ?? "";
+                }
+
+                dgvQuestions.DataSource = questions;
+                if (dgvQuestions.Columns.Contains("AnswerText"))
+                    dgvQuestions.Columns["AnswerText"].HeaderText = "תשובה";
             }
         }
+
 
         private async void dgvItems_SelectionChanged(object sender, EventArgs e)
         {
@@ -83,10 +97,24 @@ namespace EngineeringManagementSystem.WinForms.Forms
         {
             using (var client = new HttpClient())
             {
-                var questions = await client.GetFromJsonAsync<List<QuestionDTO>>($"https://localhost:7251/api/Questions/byDocument/{documentId}");
+                var questions = await client.GetFromJsonAsync<List<QuestionDTO>>(
+                    $"https://localhost:7251/api/Questions/byDocument/{documentId}");
+
+                allAnswers = await client.GetFromJsonAsync<List<AnswerDTO>>(
+                    $"https://localhost:7251/api/Answers");
+
+                foreach (var q in questions)
+                {
+                    var answer = allAnswers.FirstOrDefault(a => a.QuestionId == q.QuestionId);
+                    q.AnswerText = answer?.AnswerText ?? "";
+                }
+
                 dgvQuestions.DataSource = questions;
+                if (dgvQuestions.Columns.Contains("AnswerText"))
+                    dgvQuestions.Columns["AnswerText"].HeaderText = "תשובה";
             }
         }
+
         private async void btnOpenDoc_Click(object sender, EventArgs e)
         {
             if (dgvItems.SelectedRows.Count == 0)
@@ -143,6 +171,11 @@ namespace EngineeringManagementSystem.WinForms.Forms
         }
 
         private void dgvProjects_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

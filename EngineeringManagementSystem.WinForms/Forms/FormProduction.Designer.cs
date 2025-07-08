@@ -102,6 +102,7 @@
             this.dgvQuestions.RowTemplate.Height = 40;
             this.dgvQuestions.Size = new System.Drawing.Size(2237, 321);
             this.dgvQuestions.TabIndex = 5;
+            this.dgvQuestions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQuestions_CellContentClick);
             // 
             // btnOpenDoc
             // 

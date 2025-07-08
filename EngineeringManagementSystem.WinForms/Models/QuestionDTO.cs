@@ -21,6 +21,8 @@ namespace EngineeringManagementSystem.WinForms.Models
         public string Status { get; set; }
         public int? AnswerId { get; set; }
 
+        public string AnswerText { get; set; }
+
         public string AnsweredByUserName { get; set; } // 🟢
 
 

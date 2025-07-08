@@ -17,7 +17,7 @@ public class ProductionItemsController : ControllerBase
         _context = context;
     }
 
-    // ➕ הוספת פריט חדש לייצור
+    //  הוספת פריט חדש לייצור
     [HttpPost]
     public async Task<IActionResult> AddItem([FromBody] ProductionItemRequest request)
     {
@@ -65,7 +65,7 @@ public class ProductionItemsController : ControllerBase
 
         return Ok(result);
     }
-    // 🔍 שליפת פריט ייצור לפי ID
+    //  שליפת פריט ייצור לפי ID
     [HttpGet("{id}")]
     public async Task<ActionResult<ProductionItemDTO>> GetById(int id)
     {
@@ -91,7 +91,7 @@ public class ProductionItemsController : ControllerBase
 
 
 
-    // 📝 אופציונלי: עדכון פריט ייצור
+    //  אופציונלי: עדכון פריט ייצור
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateItem(int id, [FromBody] ProductionItemRequest request)
     {
@@ -110,4 +110,19 @@ public class ProductionItemsController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok("פריט עודכן בהצלחה");
     }
+
+    //  מחיקת פריט ייצור לפי מזהה
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteItem(int id)
+    {
+        var item = await _context.ProductionItems.FindAsync(id);
+        if (item == null)
+            return NotFound("פריט לא נמצא");
+
+        _context.ProductionItems.Remove(item);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
 }

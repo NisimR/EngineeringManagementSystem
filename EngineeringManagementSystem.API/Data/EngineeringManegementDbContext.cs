@@ -19,8 +19,8 @@ namespace EngineeringManagementSystem.API.Data
 
 
         public DbSet<Answer> Answers { get; set; }//תשובה
-        public DbSet<Log> Logs { get; set; }
-        public DbSet<Notification> Notifications { get; set; }
+       // public DbSet<Log> Logs { get; set; }
+        //public DbSet<Notification> Notifications { get; set; }
 
         public DbSet<ProductionItem> ProductionItems { get; set; }
 
